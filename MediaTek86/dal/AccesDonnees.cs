@@ -67,14 +67,14 @@ namespace MediaTek86.dal
         public static List<Personnel> GetLesPersonnels()
         {
             List<Personnel> lesPersonnels = new List<Personnel>();
-            string req = "select p.nom as nom, p.prenom as prenom, p.tel as tel, p.mail as mail, s.idservice, s.nom as service ";
+            string req = "select p.idpersonnel, p.nom as nom, p.prenom as prenom, p.tel as tel, p.mail as mail, s.idservice, s.nom as service ";
             req += "from personnel p join service s using(idservice)";
             req += "order by nom, prenom;";
             ConnexionBdd curs = ConnexionBdd.GetInstance(connectionString);
             curs.ReqSelect(req, null);
             while (curs.Read())
             {
-                Personnel unPersonnel = new Personnel((string)curs.Field("nom"), (string)curs.Field("prenom"), (string)curs.Field("tel"), (string)curs.Field("mail"), (int)curs.Field("idservice"), (string)curs.Field("service"));
+                Personnel unPersonnel = new Personnel((int)curs.Field("idpersonnel"), (string)curs.Field("nom"), (string)curs.Field("prenom"), (string)curs.Field("tel"), (string)curs.Field("mail"), (int)curs.Field("idservice"), (string)curs.Field("service"));
                 lesPersonnels.Add(unPersonnel);
             }
             curs.Close();
@@ -114,6 +114,19 @@ namespace MediaTek86.dal
             parameters.Add("@tel", personnel.Tel);
             parameters.Add("@mail", personnel.Mail);
             parameters.Add("@idservice", personnel.IdService);
+            ConnexionBdd conn = ConnexionBdd.GetInstance(connectionString);
+            conn.ReqUpdate(req, parameters);
+        }
+
+        /// <summary>
+        /// Suppression d'un personnel
+        /// </summary>
+        /// <param name="personnel">objet developpeur à supprimer</param>
+        public static void SuppPersonnel(Personnel personnel)
+        {
+            string req = "delete from personnel where idpersonnel = @idpersonnel;";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", personnel.IdPersonnel);
             ConnexionBdd conn = ConnexionBdd.GetInstance(connectionString);
             conn.ReqUpdate(req, parameters);
         }

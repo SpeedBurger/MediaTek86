@@ -11,6 +11,7 @@ namespace MediaTek86.modele
     /// </summary>
     public class Personnel
     {
+        private readonly int idpersonnel;
         private readonly string nom;
         private readonly string prenom;
         private readonly string tel;
@@ -18,6 +19,10 @@ namespace MediaTek86.modele
         private readonly int idservice;
         private readonly string service;
 
+        /// <summary>
+        /// Getter sur nom
+        /// </summary>
+        public int IdPersonnel { get => idpersonnel; }
         /// <summary>
         /// Getter sur nom
         /// </summary>
@@ -46,14 +51,16 @@ namespace MediaTek86.modele
         /// <summary>
         /// Constructeur : valorise les propriétés
         /// </summary>
+        /// <param name="idpersonnel"></param>
         /// <param name="nom"></param>
         /// <param name="prenom"></param>
         /// <param name="tel"></param>
         /// <param name="mail"></param>
         /// <param name="idservice"></param>
         /// <param name="service">nom du service</param>
-        public Personnel(string nom, string prenom, string tel, string mail, int idservice, string service)
+        public Personnel(int idpersonnel, string nom, string prenom, string tel, string mail, int idservice, string service)
         {
+            this.idpersonnel = idpersonnel;
             this.nom = nom;
             this.prenom = prenom;
             this.tel = tel;

@@ -31,6 +31,11 @@ namespace MediaTek86.vue
             this.controle = controle;
         }
 
+        /// <summary>
+        /// Clic sur le bouton connecter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnConnecter_Click(object sender, EventArgs e)
         {
             if (!TxtLogin.Text.Equals("") && !TxtPwd.Text.Equals(""))
@@ -46,6 +51,19 @@ namespace MediaTek86.vue
             else
             {
                 MessageBox.Show("Tous les champs doivent être remplis.", "Information");
+            }
+        }
+
+        /// <summary>
+        /// Appuie sur la touche entrée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtPwd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BtnConnecter_Click(null, null);
             }
         }
     }

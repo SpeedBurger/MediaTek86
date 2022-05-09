@@ -43,6 +43,7 @@ namespace MediaTek86.vue
             this.TxtPwd.Size = new System.Drawing.Size(324, 26);
             this.TxtPwd.TabIndex = 9;
             this.TxtPwd.UseSystemPasswordChar = true;
+            this.TxtPwd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPwd_KeyPress);
             // 
             // TxtLogin
             // 
@@ -92,6 +93,7 @@ namespace MediaTek86.vue
             this.Controls.Add(this.BtnConnecter);
             this.Name = "FrmAuthentification";
             this.Text = "Authentification";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmAuthentification_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

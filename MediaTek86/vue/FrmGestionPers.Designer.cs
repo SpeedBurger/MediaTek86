@@ -210,6 +210,7 @@ namespace MediaTek86.vue
             this.BtnSupprimerPerso.TabIndex = 12;
             this.BtnSupprimerPerso.Text = "Supprimer";
             this.BtnSupprimerPerso.UseVisualStyleBackColor = true;
+            this.BtnSupprimerPerso.Click += new System.EventHandler(this.BtnSupprimerPerso_Click);
             // 
             // BtnModifierPerso
             // 

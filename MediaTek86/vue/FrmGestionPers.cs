@@ -58,6 +58,7 @@ namespace MediaTek86.vue
             bdgPersonnels.DataSource = lesPersonnels;
             DgvListePersonnel.DataSource = bdgPersonnels;
             DgvListePersonnel.Columns["idservice"].Visible = false;
+            DgvListePersonnel.Columns["idpersonnel"].Visible = false;
             DgvListePersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
@@ -125,8 +126,9 @@ namespace MediaTek86.vue
         {
             if (!TxtNom.Text.Equals("") && !TxtPrenom.Text.Equals("") && !TxtTel.Text.Equals("") && !TxtMail.Text.Equals("") && CboService.SelectedIndex != -1)
             {
+                int idpersonnel = 0;
                 Service unService = (Service)bdgService.List[bdgService.Position];
-                Personnel unPersonnel = new Personnel(TxtNom.Text, TxtPrenom.Text, TxtTel.Text, TxtMail.Text, unService.Idservice, unService.Nom);
+                Personnel unPersonnel = new Personnel(idpersonnel, TxtNom.Text, TxtPrenom.Text, TxtTel.Text, TxtMail.Text, unService.Idservice, unService.Nom);
                 controle.AjoutPersonnel(unPersonnel);
             }
             else
@@ -150,6 +152,29 @@ namespace MediaTek86.vue
                 TxtPrenom.Text = "";
                 TxtTel.Text = "";
             }
+        }
+
+        /// <summary>
+        /// clic sur le bouton pour supprimer un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSupprimerPerso_Click(object sender, EventArgs e)
+        {
+            if (DgvListePersonnel.SelectedRows.Count > 0)
+            {
+                Personnel unPersonnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
+                if (MessageBox.Show("Voulez-vous vraiment supprimer " + unPersonnel.Nom + " " + unPersonnel.Prenom + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    controle.SuppPersonnel(unPersonnel);
+                    Init();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+            }
+            Init();
         }
     }
 }
