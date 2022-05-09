@@ -85,6 +85,7 @@ namespace MediaTek86.connexion
         /// Exécute une requête type "select" et valorise le curseur
         /// </summary>
         /// <param name="stringQuery">requête select</param>
+        /// <param name="parameters">paramètre de la requete</param>
         public void ReqSelect(string stringQuery, Dictionary<string, object> parameters)
         {
             try

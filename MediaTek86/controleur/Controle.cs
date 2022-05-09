@@ -1,4 +1,5 @@
 ﻿using MediaTek86.dal;
+using MediaTek86.modele;
 using MediaTek86.vue;
 using System;
 using System.Collections.Generic;
@@ -44,5 +45,13 @@ namespace MediaTek86.controleur
             }
         }
 
+        /// <summary>
+        /// Récupère et retourne les infos des personnels provenant de la BDD
+        /// </summary>
+        /// <returns>liste des personnels</returns>
+        public List<Personnel> GetLesPersonnels()
+        {
+            return AccesDonnees.GetLesPersonnels();
+        }
     }
 }

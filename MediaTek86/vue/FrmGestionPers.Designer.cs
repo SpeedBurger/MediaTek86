@@ -30,160 +30,94 @@ namespace MediaTek86.vue
         private void InitializeComponent()
         {
             this.DgvListePersonnel = new System.Windows.Forms.DataGridView();
-            this.LblDgv = new System.Windows.Forms.Label();
-            this.GrpGestionPers = new System.Windows.Forms.GroupBox();
-            this.TxtNom = new System.Windows.Forms.TextBox();
-            this.TxtPrenom = new System.Windows.Forms.TextBox();
-            this.TxtTel = new System.Windows.Forms.TextBox();
-            this.TxtMail = new System.Windows.Forms.TextBox();
-            this.CboService = new System.Windows.Forms.ComboBox();
-            this.LblNom = new System.Windows.Forms.Label();
-            this.LblPrenom = new System.Windows.Forms.Label();
-            this.LblService = new System.Windows.Forms.Label();
-            this.LblMail = new System.Windows.Forms.Label();
+            this.GrpAjoutPers = new System.Windows.Forms.GroupBox();
+            this.BtnAnnulerAjoutPers = new System.Windows.Forms.Button();
+            this.BtnValiderAjoutPers = new System.Windows.Forms.Button();
             this.LblTel = new System.Windows.Forms.Label();
-            this.BtnAjouter = new System.Windows.Forms.Button();
-            this.BtnModifier = new System.Windows.Forms.Button();
-            this.BtnSupprimer = new System.Windows.Forms.Button();
+            this.LblMail = new System.Windows.Forms.Label();
+            this.LblService = new System.Windows.Forms.Label();
+            this.LblPrenom = new System.Windows.Forms.Label();
+            this.LblNom = new System.Windows.Forms.Label();
+            this.CboService = new System.Windows.Forms.ComboBox();
+            this.TxtMail = new System.Windows.Forms.TextBox();
+            this.TxtTel = new System.Windows.Forms.TextBox();
+            this.TxtPrenom = new System.Windows.Forms.TextBox();
+            this.TxtNom = new System.Windows.Forms.TextBox();
+            this.BtnSupprimerPerso = new System.Windows.Forms.Button();
+            this.BtnModifierPerso = new System.Windows.Forms.Button();
+            this.BtnAjouterPersonnel = new System.Windows.Forms.Button();
             this.GrpAbsence = new System.Windows.Forms.GroupBox();
-            this.BtnSupprimer2 = new System.Windows.Forms.Button();
-            this.BtnModifier2 = new System.Windows.Forms.Button();
-            this.BtnAjouter2 = new System.Windows.Forms.Button();
+            this.BtnAnnulerAjoutAbsence = new System.Windows.Forms.Button();
+            this.BtnValiderAjoutAbsence = new System.Windows.Forms.Button();
+            this.DtpFin = new System.Windows.Forms.DateTimePicker();
+            this.DtpDebut = new System.Windows.Forms.DateTimePicker();
+            this.CboNom = new System.Windows.Forms.ComboBox();
             this.LblDebut = new System.Windows.Forms.Label();
             this.LblMotif = new System.Windows.Forms.Label();
             this.LblFin = new System.Windows.Forms.Label();
             this.LblNom2 = new System.Windows.Forms.Label();
             this.CboMotif = new System.Windows.Forms.ComboBox();
-            this.CboNom = new System.Windows.Forms.ComboBox();
-            this.DtpDebut = new System.Windows.Forms.DateTimePicker();
-            this.DtpFin = new System.Windows.Forms.DateTimePicker();
             this.BtnAbsence = new System.Windows.Forms.Button();
-            this.BtnValider1 = new System.Windows.Forms.Button();
-            this.BtnAnnuler = new System.Windows.Forms.Button();
-            this.BtnValider2 = new System.Windows.Forms.Button();
-            this.BtnAnnuler2 = new System.Windows.Forms.Button();
-            this.BtnAfficherListe = new System.Windows.Forms.Button();
+            this.BtnSupprimerAbsence = new System.Windows.Forms.Button();
+            this.BtnModifierAbsence = new System.Windows.Forms.Button();
+            this.BtnAjouterAbsence = new System.Windows.Forms.Button();
+            this.GrpListe = new System.Windows.Forms.GroupBox();
+            this.BtnRetourListe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListePersonnel)).BeginInit();
-            this.GrpGestionPers.SuspendLayout();
+            this.GrpAjoutPers.SuspendLayout();
             this.GrpAbsence.SuspendLayout();
+            this.GrpListe.SuspendLayout();
             this.SuspendLayout();
             // 
             // DgvListePersonnel
             // 
-            this.DgvListePersonnel.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DgvListePersonnel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListePersonnel.Location = new System.Drawing.Point(12, 35);
             this.DgvListePersonnel.Name = "DgvListePersonnel";
             this.DgvListePersonnel.RowHeadersWidth = 62;
             this.DgvListePersonnel.RowTemplate.Height = 28;
-            this.DgvListePersonnel.Size = new System.Drawing.Size(880, 433);
+            this.DgvListePersonnel.Size = new System.Drawing.Size(874, 371);
             this.DgvListePersonnel.TabIndex = 0;
             // 
-            // LblDgv
+            // GrpAjoutPers
             // 
-            this.LblDgv.AutoSize = true;
-            this.LblDgv.Location = new System.Drawing.Point(12, 9);
-            this.LblDgv.Name = "LblDgv";
-            this.LblDgv.Size = new System.Drawing.Size(139, 20);
-            this.LblDgv.TabIndex = 1;
-            this.LblDgv.Text = "Liste du personnel";
+            this.GrpAjoutPers.BackColor = System.Drawing.SystemColors.Control;
+            this.GrpAjoutPers.Controls.Add(this.BtnAnnulerAjoutPers);
+            this.GrpAjoutPers.Controls.Add(this.BtnValiderAjoutPers);
+            this.GrpAjoutPers.Controls.Add(this.LblTel);
+            this.GrpAjoutPers.Controls.Add(this.LblMail);
+            this.GrpAjoutPers.Controls.Add(this.LblService);
+            this.GrpAjoutPers.Controls.Add(this.LblPrenom);
+            this.GrpAjoutPers.Controls.Add(this.LblNom);
+            this.GrpAjoutPers.Controls.Add(this.CboService);
+            this.GrpAjoutPers.Controls.Add(this.TxtMail);
+            this.GrpAjoutPers.Controls.Add(this.TxtTel);
+            this.GrpAjoutPers.Controls.Add(this.TxtPrenom);
+            this.GrpAjoutPers.Controls.Add(this.TxtNom);
+            this.GrpAjoutPers.Location = new System.Drawing.Point(0, 469);
+            this.GrpAjoutPers.Name = "GrpAjoutPers";
+            this.GrpAjoutPers.Size = new System.Drawing.Size(892, 162);
+            this.GrpAjoutPers.TabIndex = 2;
+            this.GrpAjoutPers.TabStop = false;
+            this.GrpAjoutPers.Text = "Ajout d\'un personnel";
             // 
-            // GrpGestionPers
+            // BtnAnnulerAjoutPers
             // 
-            this.GrpGestionPers.BackColor = System.Drawing.SystemColors.Control;
-            this.GrpGestionPers.Controls.Add(this.BtnAnnuler);
-            this.GrpGestionPers.Controls.Add(this.BtnValider1);
-            this.GrpGestionPers.Controls.Add(this.BtnSupprimer);
-            this.GrpGestionPers.Controls.Add(this.BtnModifier);
-            this.GrpGestionPers.Controls.Add(this.BtnAjouter);
-            this.GrpGestionPers.Controls.Add(this.LblTel);
-            this.GrpGestionPers.Controls.Add(this.LblMail);
-            this.GrpGestionPers.Controls.Add(this.LblService);
-            this.GrpGestionPers.Controls.Add(this.LblPrenom);
-            this.GrpGestionPers.Controls.Add(this.LblNom);
-            this.GrpGestionPers.Controls.Add(this.CboService);
-            this.GrpGestionPers.Controls.Add(this.TxtMail);
-            this.GrpGestionPers.Controls.Add(this.TxtTel);
-            this.GrpGestionPers.Controls.Add(this.TxtPrenom);
-            this.GrpGestionPers.Controls.Add(this.TxtNom);
-            this.GrpGestionPers.Location = new System.Drawing.Point(12, 474);
-            this.GrpGestionPers.Name = "GrpGestionPers";
-            this.GrpGestionPers.Size = new System.Drawing.Size(880, 162);
-            this.GrpGestionPers.TabIndex = 2;
-            this.GrpGestionPers.TabStop = false;
-            this.GrpGestionPers.Text = "Gestion du personnel";
+            this.BtnAnnulerAjoutPers.Location = new System.Drawing.Point(725, 110);
+            this.BtnAnnulerAjoutPers.Name = "BtnAnnulerAjoutPers";
+            this.BtnAnnulerAjoutPers.Size = new System.Drawing.Size(130, 34);
+            this.BtnAnnulerAjoutPers.TabIndex = 14;
+            this.BtnAnnulerAjoutPers.Text = "Annuler";
+            this.BtnAnnulerAjoutPers.UseVisualStyleBackColor = true;
             // 
-            // TxtNom
+            // BtnValiderAjoutPers
             // 
-            this.TxtNom.Location = new System.Drawing.Point(85, 34);
-            this.TxtNom.Name = "TxtNom";
-            this.TxtNom.Size = new System.Drawing.Size(246, 26);
-            this.TxtNom.TabIndex = 0;
-            // 
-            // TxtPrenom
-            // 
-            this.TxtPrenom.Location = new System.Drawing.Point(84, 72);
-            this.TxtPrenom.Name = "TxtPrenom";
-            this.TxtPrenom.Size = new System.Drawing.Size(246, 26);
-            this.TxtPrenom.TabIndex = 1;
-            // 
-            // TxtTel
-            // 
-            this.TxtTel.Location = new System.Drawing.Point(406, 72);
-            this.TxtTel.Name = "TxtTel";
-            this.TxtTel.Size = new System.Drawing.Size(246, 26);
-            this.TxtTel.TabIndex = 2;
-            // 
-            // TxtMail
-            // 
-            this.TxtMail.Location = new System.Drawing.Point(406, 34);
-            this.TxtMail.Name = "TxtMail";
-            this.TxtMail.Size = new System.Drawing.Size(357, 26);
-            this.TxtMail.TabIndex = 3;
-            // 
-            // CboService
-            // 
-            this.CboService.FormattingEnabled = true;
-            this.CboService.Location = new System.Drawing.Point(85, 110);
-            this.CboService.Name = "CboService";
-            this.CboService.Size = new System.Drawing.Size(246, 28);
-            this.CboService.TabIndex = 4;
-            // 
-            // LblNom
-            // 
-            this.LblNom.AutoSize = true;
-            this.LblNom.Location = new System.Drawing.Point(6, 40);
-            this.LblNom.Name = "LblNom";
-            this.LblNom.Size = new System.Drawing.Size(50, 20);
-            this.LblNom.TabIndex = 5;
-            this.LblNom.Text = "Nom :";
-            // 
-            // LblPrenom
-            // 
-            this.LblPrenom.AutoSize = true;
-            this.LblPrenom.Location = new System.Drawing.Point(3, 75);
-            this.LblPrenom.Name = "LblPrenom";
-            this.LblPrenom.Size = new System.Drawing.Size(72, 20);
-            this.LblPrenom.TabIndex = 6;
-            this.LblPrenom.Text = "Prénom :";
-            // 
-            // LblService
-            // 
-            this.LblService.AutoSize = true;
-            this.LblService.Location = new System.Drawing.Point(6, 113);
-            this.LblService.Name = "LblService";
-            this.LblService.Size = new System.Drawing.Size(69, 20);
-            this.LblService.TabIndex = 7;
-            this.LblService.Text = "Service :";
-            // 
-            // LblMail
-            // 
-            this.LblMail.AutoSize = true;
-            this.LblMail.Location = new System.Drawing.Point(355, 37);
-            this.LblMail.Name = "LblMail";
-            this.LblMail.Size = new System.Drawing.Size(45, 20);
-            this.LblMail.TabIndex = 8;
-            this.LblMail.Text = "Mail :";
+            this.BtnValiderAjoutPers.Location = new System.Drawing.Point(569, 110);
+            this.BtnValiderAjoutPers.Name = "BtnValiderAjoutPers";
+            this.BtnValiderAjoutPers.Size = new System.Drawing.Size(130, 34);
+            this.BtnValiderAjoutPers.TabIndex = 13;
+            this.BtnValiderAjoutPers.Text = "Valider";
+            this.BtnValiderAjoutPers.UseVisualStyleBackColor = true;
             // 
             // LblTel
             // 
@@ -194,84 +128,164 @@ namespace MediaTek86.vue
             this.LblTel.TabIndex = 9;
             this.LblTel.Text = "Tél :";
             // 
-            // BtnAjouter
+            // LblMail
             // 
-            this.BtnAjouter.Location = new System.Drawing.Point(406, 110);
-            this.BtnAjouter.Name = "BtnAjouter";
-            this.BtnAjouter.Size = new System.Drawing.Size(130, 34);
-            this.BtnAjouter.TabIndex = 10;
-            this.BtnAjouter.Text = "Ajouter";
-            this.BtnAjouter.UseVisualStyleBackColor = true;
+            this.LblMail.AutoSize = true;
+            this.LblMail.Location = new System.Drawing.Point(355, 37);
+            this.LblMail.Name = "LblMail";
+            this.LblMail.Size = new System.Drawing.Size(45, 20);
+            this.LblMail.TabIndex = 8;
+            this.LblMail.Text = "Mail :";
             // 
-            // BtnModifier
+            // LblService
             // 
-            this.BtnModifier.Location = new System.Drawing.Point(569, 110);
-            this.BtnModifier.Name = "BtnModifier";
-            this.BtnModifier.Size = new System.Drawing.Size(130, 34);
-            this.BtnModifier.TabIndex = 11;
-            this.BtnModifier.Text = "Modifier";
-            this.BtnModifier.UseVisualStyleBackColor = true;
+            this.LblService.AutoSize = true;
+            this.LblService.Location = new System.Drawing.Point(6, 113);
+            this.LblService.Name = "LblService";
+            this.LblService.Size = new System.Drawing.Size(69, 20);
+            this.LblService.TabIndex = 7;
+            this.LblService.Text = "Service :";
             // 
-            // BtnSupprimer
+            // LblPrenom
             // 
-            this.BtnSupprimer.Location = new System.Drawing.Point(725, 110);
-            this.BtnSupprimer.Name = "BtnSupprimer";
-            this.BtnSupprimer.Size = new System.Drawing.Size(130, 34);
-            this.BtnSupprimer.TabIndex = 12;
-            this.BtnSupprimer.Text = "Supprimer";
-            this.BtnSupprimer.UseVisualStyleBackColor = true;
+            this.LblPrenom.AutoSize = true;
+            this.LblPrenom.Location = new System.Drawing.Point(3, 75);
+            this.LblPrenom.Name = "LblPrenom";
+            this.LblPrenom.Size = new System.Drawing.Size(72, 20);
+            this.LblPrenom.TabIndex = 6;
+            this.LblPrenom.Text = "Prénom :";
+            // 
+            // LblNom
+            // 
+            this.LblNom.AutoSize = true;
+            this.LblNom.Location = new System.Drawing.Point(6, 40);
+            this.LblNom.Name = "LblNom";
+            this.LblNom.Size = new System.Drawing.Size(50, 20);
+            this.LblNom.TabIndex = 5;
+            this.LblNom.Text = "Nom :";
+            // 
+            // CboService
+            // 
+            this.CboService.FormattingEnabled = true;
+            this.CboService.Location = new System.Drawing.Point(85, 110);
+            this.CboService.Name = "CboService";
+            this.CboService.Size = new System.Drawing.Size(246, 28);
+            this.CboService.TabIndex = 4;
+            // 
+            // TxtMail
+            // 
+            this.TxtMail.Location = new System.Drawing.Point(406, 34);
+            this.TxtMail.Name = "TxtMail";
+            this.TxtMail.Size = new System.Drawing.Size(357, 26);
+            this.TxtMail.TabIndex = 3;
+            // 
+            // TxtTel
+            // 
+            this.TxtTel.Location = new System.Drawing.Point(406, 72);
+            this.TxtTel.Name = "TxtTel";
+            this.TxtTel.Size = new System.Drawing.Size(246, 26);
+            this.TxtTel.TabIndex = 2;
+            // 
+            // TxtPrenom
+            // 
+            this.TxtPrenom.Location = new System.Drawing.Point(84, 72);
+            this.TxtPrenom.Name = "TxtPrenom";
+            this.TxtPrenom.Size = new System.Drawing.Size(246, 26);
+            this.TxtPrenom.TabIndex = 1;
+            // 
+            // TxtNom
+            // 
+            this.TxtNom.Location = new System.Drawing.Point(85, 34);
+            this.TxtNom.Name = "TxtNom";
+            this.TxtNom.Size = new System.Drawing.Size(246, 26);
+            this.TxtNom.TabIndex = 0;
+            // 
+            // BtnSupprimerPerso
+            // 
+            this.BtnSupprimerPerso.Location = new System.Drawing.Point(158, 400);
+            this.BtnSupprimerPerso.Name = "BtnSupprimerPerso";
+            this.BtnSupprimerPerso.Size = new System.Drawing.Size(130, 34);
+            this.BtnSupprimerPerso.TabIndex = 12;
+            this.BtnSupprimerPerso.Text = "Supprimer";
+            this.BtnSupprimerPerso.UseVisualStyleBackColor = true;
+            // 
+            // BtnModifierPerso
+            // 
+            this.BtnModifierPerso.Location = new System.Drawing.Point(12, 401);
+            this.BtnModifierPerso.Name = "BtnModifierPerso";
+            this.BtnModifierPerso.Size = new System.Drawing.Size(130, 34);
+            this.BtnModifierPerso.TabIndex = 11;
+            this.BtnModifierPerso.Text = "Modifier";
+            this.BtnModifierPerso.UseVisualStyleBackColor = true;
+            // 
+            // BtnAjouterPersonnel
+            // 
+            this.BtnAjouterPersonnel.Location = new System.Drawing.Point(303, 400);
+            this.BtnAjouterPersonnel.Name = "BtnAjouterPersonnel";
+            this.BtnAjouterPersonnel.Size = new System.Drawing.Size(130, 34);
+            this.BtnAjouterPersonnel.TabIndex = 10;
+            this.BtnAjouterPersonnel.Text = "Ajouter";
+            this.BtnAjouterPersonnel.UseVisualStyleBackColor = true;
             // 
             // GrpAbsence
             // 
             this.GrpAbsence.BackColor = System.Drawing.SystemColors.Control;
-            this.GrpAbsence.Controls.Add(this.BtnAfficherListe);
-            this.GrpAbsence.Controls.Add(this.BtnAnnuler2);
-            this.GrpAbsence.Controls.Add(this.BtnValider2);
-            this.GrpAbsence.Controls.Add(this.BtnAbsence);
+            this.GrpAbsence.Controls.Add(this.BtnAnnulerAjoutAbsence);
+            this.GrpAbsence.Controls.Add(this.BtnValiderAjoutAbsence);
             this.GrpAbsence.Controls.Add(this.DtpFin);
             this.GrpAbsence.Controls.Add(this.DtpDebut);
             this.GrpAbsence.Controls.Add(this.CboNom);
-            this.GrpAbsence.Controls.Add(this.BtnSupprimer2);
-            this.GrpAbsence.Controls.Add(this.BtnModifier2);
-            this.GrpAbsence.Controls.Add(this.BtnAjouter2);
             this.GrpAbsence.Controls.Add(this.LblDebut);
             this.GrpAbsence.Controls.Add(this.LblMotif);
             this.GrpAbsence.Controls.Add(this.LblFin);
             this.GrpAbsence.Controls.Add(this.LblNom2);
             this.GrpAbsence.Controls.Add(this.CboMotif);
-            this.GrpAbsence.Location = new System.Drawing.Point(12, 642);
+            this.GrpAbsence.Location = new System.Drawing.Point(0, 642);
             this.GrpAbsence.Name = "GrpAbsence";
-            this.GrpAbsence.Size = new System.Drawing.Size(880, 162);
+            this.GrpAbsence.Size = new System.Drawing.Size(892, 162);
             this.GrpAbsence.TabIndex = 13;
             this.GrpAbsence.TabStop = false;
             this.GrpAbsence.Text = "Gestion des absences";
             // 
-            // BtnSupprimer2
+            // BtnAnnulerAjoutAbsence
             // 
-            this.BtnSupprimer2.Location = new System.Drawing.Point(725, 110);
-            this.BtnSupprimer2.Name = "BtnSupprimer2";
-            this.BtnSupprimer2.Size = new System.Drawing.Size(130, 34);
-            this.BtnSupprimer2.TabIndex = 12;
-            this.BtnSupprimer2.Text = "Supprimer";
-            this.BtnSupprimer2.UseVisualStyleBackColor = true;
+            this.BtnAnnulerAjoutAbsence.Location = new System.Drawing.Point(725, 110);
+            this.BtnAnnulerAjoutAbsence.Name = "BtnAnnulerAjoutAbsence";
+            this.BtnAnnulerAjoutAbsence.Size = new System.Drawing.Size(130, 34);
+            this.BtnAnnulerAjoutAbsence.TabIndex = 15;
+            this.BtnAnnulerAjoutAbsence.Text = "Annuler";
+            this.BtnAnnulerAjoutAbsence.UseVisualStyleBackColor = true;
             // 
-            // BtnModifier2
+            // BtnValiderAjoutAbsence
             // 
-            this.BtnModifier2.Location = new System.Drawing.Point(569, 110);
-            this.BtnModifier2.Name = "BtnModifier2";
-            this.BtnModifier2.Size = new System.Drawing.Size(130, 34);
-            this.BtnModifier2.TabIndex = 11;
-            this.BtnModifier2.Text = "Modifier";
-            this.BtnModifier2.UseVisualStyleBackColor = true;
+            this.BtnValiderAjoutAbsence.Location = new System.Drawing.Point(569, 110);
+            this.BtnValiderAjoutAbsence.Name = "BtnValiderAjoutAbsence";
+            this.BtnValiderAjoutAbsence.Size = new System.Drawing.Size(130, 34);
+            this.BtnValiderAjoutAbsence.TabIndex = 15;
+            this.BtnValiderAjoutAbsence.Text = "Valider";
+            this.BtnValiderAjoutAbsence.UseVisualStyleBackColor = true;
             // 
-            // BtnAjouter2
+            // DtpFin
             // 
-            this.BtnAjouter2.Location = new System.Drawing.Point(406, 110);
-            this.BtnAjouter2.Name = "BtnAjouter2";
-            this.BtnAjouter2.Size = new System.Drawing.Size(130, 34);
-            this.BtnAjouter2.TabIndex = 10;
-            this.BtnAjouter2.Text = "Ajouter";
-            this.BtnAjouter2.UseVisualStyleBackColor = true;
+            this.DtpFin.Location = new System.Drawing.Point(406, 67);
+            this.DtpFin.Name = "DtpFin";
+            this.DtpFin.Size = new System.Drawing.Size(200, 26);
+            this.DtpFin.TabIndex = 15;
+            // 
+            // DtpDebut
+            // 
+            this.DtpDebut.Location = new System.Drawing.Point(406, 34);
+            this.DtpDebut.Name = "DtpDebut";
+            this.DtpDebut.Size = new System.Drawing.Size(200, 26);
+            this.DtpDebut.TabIndex = 14;
+            // 
+            // CboNom
+            // 
+            this.CboNom.FormattingEnabled = true;
+            this.CboNom.Location = new System.Drawing.Point(84, 34);
+            this.CboNom.Name = "CboNom";
+            this.CboNom.Size = new System.Drawing.Size(246, 28);
+            this.CboNom.TabIndex = 13;
             // 
             // LblDebut
             // 
@@ -317,109 +331,95 @@ namespace MediaTek86.vue
             this.CboMotif.Size = new System.Drawing.Size(246, 28);
             this.CboMotif.TabIndex = 4;
             // 
-            // CboNom
-            // 
-            this.CboNom.FormattingEnabled = true;
-            this.CboNom.Location = new System.Drawing.Point(84, 34);
-            this.CboNom.Name = "CboNom";
-            this.CboNom.Size = new System.Drawing.Size(246, 28);
-            this.CboNom.TabIndex = 13;
-            // 
-            // DtpDebut
-            // 
-            this.DtpDebut.Location = new System.Drawing.Point(406, 34);
-            this.DtpDebut.Name = "DtpDebut";
-            this.DtpDebut.Size = new System.Drawing.Size(200, 26);
-            this.DtpDebut.TabIndex = 14;
-            // 
-            // DtpFin
-            // 
-            this.DtpFin.Location = new System.Drawing.Point(406, 67);
-            this.DtpFin.Name = "DtpFin";
-            this.DtpFin.Size = new System.Drawing.Size(200, 26);
-            this.DtpFin.TabIndex = 15;
-            // 
             // BtnAbsence
             // 
-            this.BtnAbsence.Location = new System.Drawing.Point(672, 37);
+            this.BtnAbsence.Location = new System.Drawing.Point(450, 400);
             this.BtnAbsence.Name = "BtnAbsence";
-            this.BtnAbsence.Size = new System.Drawing.Size(130, 49);
+            this.BtnAbsence.Size = new System.Drawing.Size(197, 34);
             this.BtnAbsence.TabIndex = 16;
             this.BtnAbsence.Text = "Afficher les absences";
             this.BtnAbsence.UseVisualStyleBackColor = true;
             // 
-            // BtnValider1
+            // BtnSupprimerAbsence
             // 
-            this.BtnValider1.Location = new System.Drawing.Point(725, 110);
-            this.BtnValider1.Name = "BtnValider1";
-            this.BtnValider1.Size = new System.Drawing.Size(130, 34);
-            this.BtnValider1.TabIndex = 13;
-            this.BtnValider1.Text = "Valider";
-            this.BtnValider1.UseVisualStyleBackColor = true;
+            this.BtnSupprimerAbsence.Location = new System.Drawing.Point(158, 401);
+            this.BtnSupprimerAbsence.Name = "BtnSupprimerAbsence";
+            this.BtnSupprimerAbsence.Size = new System.Drawing.Size(130, 34);
+            this.BtnSupprimerAbsence.TabIndex = 12;
+            this.BtnSupprimerAbsence.Text = "Supprimer";
+            this.BtnSupprimerAbsence.UseVisualStyleBackColor = true;
             // 
-            // BtnAnnuler
+            // BtnModifierAbsence
             // 
-            this.BtnAnnuler.Location = new System.Drawing.Point(569, 110);
-            this.BtnAnnuler.Name = "BtnAnnuler";
-            this.BtnAnnuler.Size = new System.Drawing.Size(130, 34);
-            this.BtnAnnuler.TabIndex = 14;
-            this.BtnAnnuler.Text = "Annuler";
-            this.BtnAnnuler.UseVisualStyleBackColor = true;
+            this.BtnModifierAbsence.Location = new System.Drawing.Point(12, 400);
+            this.BtnModifierAbsence.Name = "BtnModifierAbsence";
+            this.BtnModifierAbsence.Size = new System.Drawing.Size(130, 34);
+            this.BtnModifierAbsence.TabIndex = 11;
+            this.BtnModifierAbsence.Text = "Modifier";
+            this.BtnModifierAbsence.UseVisualStyleBackColor = true;
             // 
-            // BtnValider2
+            // BtnAjouterAbsence
             // 
-            this.BtnValider2.Location = new System.Drawing.Point(725, 110);
-            this.BtnValider2.Name = "BtnValider2";
-            this.BtnValider2.Size = new System.Drawing.Size(130, 34);
-            this.BtnValider2.TabIndex = 15;
-            this.BtnValider2.Text = "Valider";
-            this.BtnValider2.UseVisualStyleBackColor = true;
+            this.BtnAjouterAbsence.Location = new System.Drawing.Point(303, 401);
+            this.BtnAjouterAbsence.Name = "BtnAjouterAbsence";
+            this.BtnAjouterAbsence.Size = new System.Drawing.Size(130, 34);
+            this.BtnAjouterAbsence.TabIndex = 10;
+            this.BtnAjouterAbsence.Text = "Ajouter";
+            this.BtnAjouterAbsence.UseVisualStyleBackColor = true;
             // 
-            // BtnAnnuler2
+            // GrpListe
             // 
-            this.BtnAnnuler2.Location = new System.Drawing.Point(569, 110);
-            this.BtnAnnuler2.Name = "BtnAnnuler2";
-            this.BtnAnnuler2.Size = new System.Drawing.Size(130, 34);
-            this.BtnAnnuler2.TabIndex = 15;
-            this.BtnAnnuler2.Text = "Annuler";
-            this.BtnAnnuler2.UseVisualStyleBackColor = true;
+            this.GrpListe.BackColor = System.Drawing.SystemColors.Control;
+            this.GrpListe.Controls.Add(this.BtnRetourListe);
+            this.GrpListe.Controls.Add(this.BtnAbsence);
+            this.GrpListe.Controls.Add(this.BtnAjouterPersonnel);
+            this.GrpListe.Controls.Add(this.BtnModifierPerso);
+            this.GrpListe.Controls.Add(this.BtnSupprimerPerso);
+            this.GrpListe.Controls.Add(this.BtnAjouterAbsence);
+            this.GrpListe.Controls.Add(this.BtnModifierAbsence);
+            this.GrpListe.Controls.Add(this.BtnSupprimerAbsence);
+            this.GrpListe.Location = new System.Drawing.Point(0, 12);
+            this.GrpListe.Name = "GrpListe";
+            this.GrpListe.Size = new System.Drawing.Size(892, 446);
+            this.GrpListe.TabIndex = 14;
+            this.GrpListe.TabStop = false;
+            this.GrpListe.Text = "Liste du personnel";
             // 
-            // BtnAfficherListe
+            // BtnRetourListe
             // 
-            this.BtnAfficherListe.Location = new System.Drawing.Point(672, 37);
-            this.BtnAfficherListe.Name = "BtnAfficherListe";
-            this.BtnAfficherListe.Size = new System.Drawing.Size(130, 49);
-            this.BtnAfficherListe.TabIndex = 17;
-            this.BtnAfficherListe.Text = "Retour liste du personnel";
-            this.BtnAfficherListe.UseVisualStyleBackColor = true;
+            this.BtnRetourListe.Location = new System.Drawing.Point(450, 400);
+            this.BtnRetourListe.Name = "BtnRetourListe";
+            this.BtnRetourListe.Size = new System.Drawing.Size(197, 34);
+            this.BtnRetourListe.TabIndex = 17;
+            this.BtnRetourListe.Text = "Retour à la liste";
+            this.BtnRetourListe.UseVisualStyleBackColor = true;
             // 
             // FrmGestionPers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(899, 809);
+            this.ClientSize = new System.Drawing.Size(893, 803);
             this.Controls.Add(this.GrpAbsence);
-            this.Controls.Add(this.GrpGestionPers);
-            this.Controls.Add(this.LblDgv);
+            this.Controls.Add(this.GrpAjoutPers);
             this.Controls.Add(this.DgvListePersonnel);
+            this.Controls.Add(this.GrpListe);
             this.Name = "FrmGestionPers";
             this.Text = "Gestion du personnel";
             ((System.ComponentModel.ISupportInitialize)(this.DgvListePersonnel)).EndInit();
-            this.GrpGestionPers.ResumeLayout(false);
-            this.GrpGestionPers.PerformLayout();
+            this.GrpAjoutPers.ResumeLayout(false);
+            this.GrpAjoutPers.PerformLayout();
             this.GrpAbsence.ResumeLayout(false);
             this.GrpAbsence.PerformLayout();
+            this.GrpListe.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView DgvListePersonnel;
-        private System.Windows.Forms.Label LblDgv;
-        private System.Windows.Forms.GroupBox GrpGestionPers;
+        private System.Windows.Forms.GroupBox GrpAjoutPers;
         private System.Windows.Forms.Label LblService;
         private System.Windows.Forms.Label LblPrenom;
         private System.Windows.Forms.Label LblNom;
@@ -429,15 +429,15 @@ namespace MediaTek86.vue
         private System.Windows.Forms.TextBox TxtPrenom;
         private System.Windows.Forms.TextBox TxtNom;
         private System.Windows.Forms.Label LblMail;
-        private System.Windows.Forms.Button BtnSupprimer;
-        private System.Windows.Forms.Button BtnModifier;
-        private System.Windows.Forms.Button BtnAjouter;
+        private System.Windows.Forms.Button BtnSupprimerPerso;
+        private System.Windows.Forms.Button BtnModifierPerso;
+        private System.Windows.Forms.Button BtnAjouterPersonnel;
         private System.Windows.Forms.Label LblTel;
         private System.Windows.Forms.GroupBox GrpAbsence;
         private System.Windows.Forms.ComboBox CboNom;
-        private System.Windows.Forms.Button BtnSupprimer2;
-        private System.Windows.Forms.Button BtnModifier2;
-        private System.Windows.Forms.Button BtnAjouter2;
+        private System.Windows.Forms.Button BtnSupprimerAbsence;
+        private System.Windows.Forms.Button BtnModifierAbsence;
+        private System.Windows.Forms.Button BtnAjouterAbsence;
         private System.Windows.Forms.Label LblDebut;
         private System.Windows.Forms.Label LblMotif;
         private System.Windows.Forms.Label LblFin;
@@ -445,11 +445,12 @@ namespace MediaTek86.vue
         private System.Windows.Forms.ComboBox CboMotif;
         private System.Windows.Forms.DateTimePicker DtpFin;
         private System.Windows.Forms.DateTimePicker DtpDebut;
-        private System.Windows.Forms.Button BtnAnnuler;
-        private System.Windows.Forms.Button BtnValider1;
-        private System.Windows.Forms.Button BtnAnnuler2;
-        private System.Windows.Forms.Button BtnValider2;
+        private System.Windows.Forms.Button BtnAnnulerAjoutPers;
+        private System.Windows.Forms.Button BtnValiderAjoutPers;
+        private System.Windows.Forms.Button BtnAnnulerAjoutAbsence;
+        private System.Windows.Forms.Button BtnValiderAjoutAbsence;
         private System.Windows.Forms.Button BtnAbsence;
-        private System.Windows.Forms.Button BtnAfficherListe;
+        private System.Windows.Forms.GroupBox GrpListe;
+        private System.Windows.Forms.Button BtnRetourListe;
     }
 }
