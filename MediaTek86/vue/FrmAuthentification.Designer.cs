@@ -42,6 +42,7 @@ namespace MediaTek86.vue
             this.TxtPwd.Name = "TxtPwd";
             this.TxtPwd.Size = new System.Drawing.Size(324, 26);
             this.TxtPwd.TabIndex = 9;
+            this.TxtPwd.UseSystemPasswordChar = true;
             // 
             // TxtLogin
             // 
@@ -76,6 +77,7 @@ namespace MediaTek86.vue
             this.BtnConnecter.TabIndex = 5;
             this.BtnConnecter.Text = "Connecter";
             this.BtnConnecter.UseVisualStyleBackColor = true;
+            this.BtnConnecter.Click += new System.EventHandler(this.BtnConnecter_Click);
             // 
             // FrmAuthentification
             // 

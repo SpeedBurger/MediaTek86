@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaTek86.controleur;
+using System;
 using System.Windows.Forms;
 
 namespace MediaTek86.vue
@@ -8,9 +9,15 @@ namespace MediaTek86.vue
     /// </summary>
     public partial class FrmGestionPers : Form
     {
-        public FrmGestionPers()
+        /// <summary>
+        /// instance du controleur
+        /// </summary>
+        private readonly Controle controle;
+
+        public FrmGestionPers(Controle controle)
         {
             InitializeComponent();
+            this.controle = controle;
         }
     }
 }

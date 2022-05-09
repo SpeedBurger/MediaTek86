@@ -9,7 +9,7 @@ namespace MediaTek86.modele
     /// <summary>
     /// Classe métier concernant les personnels.
     /// </summary>
-    class Personnel
+    public class Personnel
     {
     }
 }

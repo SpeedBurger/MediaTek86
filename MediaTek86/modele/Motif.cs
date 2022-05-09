@@ -9,7 +9,7 @@ namespace MediaTek86.modele
     /// <summary>
     /// Classe Metier concernant les motifs d'absences.
     /// </summary>
-    class Motif
+    public class Motif
     {
     }
 }

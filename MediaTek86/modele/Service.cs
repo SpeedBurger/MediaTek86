@@ -9,7 +9,7 @@ namespace MediaTek86.modele
     /// <summary>
     /// classe metier concernant les différents services.
     /// </summary>
-    class Service
+    public class Service
     {
     }
 }
