@@ -80,6 +80,25 @@ namespace MediaTek86.dal
             curs.Close();
             return lesPersonnels;
         }
+
+        /// <summary>
+        /// Récupère et retourne les services provenant de la BDD
+        /// </summary>
+        /// <returns>liste des services</returns>
+        public static List<Service> GetLesServices()
+        {
+            List<Service> lesServices = new List<Service>();
+            string req = "select * from service order by nom;";
+            ConnexionBdd curs = ConnexionBdd.GetInstance(connectionString);
+            curs.ReqSelect(req, null);
+            while (curs.Read())
+            {
+                Service unService = new Service((int)curs.Field("idservice"), (string)curs.Field("nom"));
+                lesServices.Add(unService);
+            }
+            curs.Close();
+            return lesServices;
+        }
     }
 
 }

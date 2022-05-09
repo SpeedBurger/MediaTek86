@@ -109,6 +109,7 @@ namespace MediaTek86.vue
             this.BtnAnnulerAjoutPers.TabIndex = 14;
             this.BtnAnnulerAjoutPers.Text = "Annuler";
             this.BtnAnnulerAjoutPers.UseVisualStyleBackColor = true;
+            this.BtnAnnulerAjoutPers.Click += new System.EventHandler(this.BtnAnnulerAjoutPers_Click);
             // 
             // BtnValiderAjoutPers
             // 
@@ -226,6 +227,7 @@ namespace MediaTek86.vue
             this.BtnAjouterPersonnel.TabIndex = 10;
             this.BtnAjouterPersonnel.Text = "Ajouter";
             this.BtnAjouterPersonnel.UseVisualStyleBackColor = true;
+            this.BtnAjouterPersonnel.Click += new System.EventHandler(this.BtnAjouterPersonnel_Click);
             // 
             // GrpAbsence
             // 

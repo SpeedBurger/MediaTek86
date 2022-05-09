@@ -32,5 +32,14 @@ namespace MediaTek86.modele
         /// Getter sur nom
         /// </summary>
         public string Nom { get => nom; }
+
+        /// <summary>
+        /// Définit l'information à afficher (juste le nom)
+        /// </summary>
+        /// <returns>nom du service</returns>
+        public override string ToString()
+        {
+            return this.nom;
+        }
     }
 }

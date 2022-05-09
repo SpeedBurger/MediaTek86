@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace MediaTek86.controleur
 {
+    /// <summary>
+    /// Classe s'occupant des dialogues entre modele et vue conformement au MVC
+    /// </summary>
     public class Controle
     {
         /// <summary>
@@ -52,6 +55,15 @@ namespace MediaTek86.controleur
         public List<Personnel> GetLesPersonnels()
         {
             return AccesDonnees.GetLesPersonnels();
+        }
+
+        /// <summary>
+        /// Récupère et retourne les noms des services provenant de la BDD
+        /// </summary>
+        /// <returns>liste des services</returns>
+        public List<Service> GetLesServices()
+        {
+            return AccesDonnees.GetLesServices();
         }
     }
 }
