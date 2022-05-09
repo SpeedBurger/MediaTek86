@@ -31,8 +31,8 @@ namespace MediaTek86.vue
         {
             this.DgvListePersonnel = new System.Windows.Forms.DataGridView();
             this.GrpAjoutPers = new System.Windows.Forms.GroupBox();
-            this.BtnAnnulerAjoutPers = new System.Windows.Forms.Button();
-            this.BtnValiderAjoutPers = new System.Windows.Forms.Button();
+            this.BtnAnnulerPers = new System.Windows.Forms.Button();
+            this.BtnValiderPers = new System.Windows.Forms.Button();
             this.LblTel = new System.Windows.Forms.Label();
             this.LblMail = new System.Windows.Forms.Label();
             this.LblService = new System.Windows.Forms.Label();
@@ -47,8 +47,8 @@ namespace MediaTek86.vue
             this.BtnModifierPerso = new System.Windows.Forms.Button();
             this.BtnAjouterPersonnel = new System.Windows.Forms.Button();
             this.GrpAbsence = new System.Windows.Forms.GroupBox();
-            this.BtnAnnulerAjoutAbsence = new System.Windows.Forms.Button();
-            this.BtnValiderAjoutAbsence = new System.Windows.Forms.Button();
+            this.BtnAnnulerAbsence = new System.Windows.Forms.Button();
+            this.BtnValiderAbsence = new System.Windows.Forms.Button();
             this.DtpFin = new System.Windows.Forms.DateTimePicker();
             this.DtpDebut = new System.Windows.Forms.DateTimePicker();
             this.CboNom = new System.Windows.Forms.ComboBox();
@@ -82,8 +82,8 @@ namespace MediaTek86.vue
             // GrpAjoutPers
             // 
             this.GrpAjoutPers.BackColor = System.Drawing.SystemColors.Control;
-            this.GrpAjoutPers.Controls.Add(this.BtnAnnulerAjoutPers);
-            this.GrpAjoutPers.Controls.Add(this.BtnValiderAjoutPers);
+            this.GrpAjoutPers.Controls.Add(this.BtnAnnulerPers);
+            this.GrpAjoutPers.Controls.Add(this.BtnValiderPers);
             this.GrpAjoutPers.Controls.Add(this.LblTel);
             this.GrpAjoutPers.Controls.Add(this.LblMail);
             this.GrpAjoutPers.Controls.Add(this.LblService);
@@ -101,24 +101,25 @@ namespace MediaTek86.vue
             this.GrpAjoutPers.TabStop = false;
             this.GrpAjoutPers.Text = "Ajout d\'un personnel";
             // 
-            // BtnAnnulerAjoutPers
+            // BtnAnnulerPers
             // 
-            this.BtnAnnulerAjoutPers.Location = new System.Drawing.Point(725, 110);
-            this.BtnAnnulerAjoutPers.Name = "BtnAnnulerAjoutPers";
-            this.BtnAnnulerAjoutPers.Size = new System.Drawing.Size(130, 34);
-            this.BtnAnnulerAjoutPers.TabIndex = 14;
-            this.BtnAnnulerAjoutPers.Text = "Annuler";
-            this.BtnAnnulerAjoutPers.UseVisualStyleBackColor = true;
-            this.BtnAnnulerAjoutPers.Click += new System.EventHandler(this.BtnAnnulerAjoutPers_Click);
+            this.BtnAnnulerPers.Location = new System.Drawing.Point(725, 110);
+            this.BtnAnnulerPers.Name = "BtnAnnulerPers";
+            this.BtnAnnulerPers.Size = new System.Drawing.Size(130, 34);
+            this.BtnAnnulerPers.TabIndex = 14;
+            this.BtnAnnulerPers.Text = "Annuler";
+            this.BtnAnnulerPers.UseVisualStyleBackColor = true;
+            this.BtnAnnulerPers.Click += new System.EventHandler(this.BtnAnnulerAjoutPers_Click);
             // 
-            // BtnValiderAjoutPers
+            // BtnValiderPers
             // 
-            this.BtnValiderAjoutPers.Location = new System.Drawing.Point(569, 110);
-            this.BtnValiderAjoutPers.Name = "BtnValiderAjoutPers";
-            this.BtnValiderAjoutPers.Size = new System.Drawing.Size(130, 34);
-            this.BtnValiderAjoutPers.TabIndex = 13;
-            this.BtnValiderAjoutPers.Text = "Valider";
-            this.BtnValiderAjoutPers.UseVisualStyleBackColor = true;
+            this.BtnValiderPers.Location = new System.Drawing.Point(569, 110);
+            this.BtnValiderPers.Name = "BtnValiderPers";
+            this.BtnValiderPers.Size = new System.Drawing.Size(130, 34);
+            this.BtnValiderPers.TabIndex = 13;
+            this.BtnValiderPers.Text = "Valider";
+            this.BtnValiderPers.UseVisualStyleBackColor = true;
+            this.BtnValiderPers.Click += new System.EventHandler(this.BtnValiderAjoutPers_Click);
             // 
             // LblTel
             // 
@@ -232,8 +233,8 @@ namespace MediaTek86.vue
             // GrpAbsence
             // 
             this.GrpAbsence.BackColor = System.Drawing.SystemColors.Control;
-            this.GrpAbsence.Controls.Add(this.BtnAnnulerAjoutAbsence);
-            this.GrpAbsence.Controls.Add(this.BtnValiderAjoutAbsence);
+            this.GrpAbsence.Controls.Add(this.BtnAnnulerAbsence);
+            this.GrpAbsence.Controls.Add(this.BtnValiderAbsence);
             this.GrpAbsence.Controls.Add(this.DtpFin);
             this.GrpAbsence.Controls.Add(this.DtpDebut);
             this.GrpAbsence.Controls.Add(this.CboNom);
@@ -249,23 +250,23 @@ namespace MediaTek86.vue
             this.GrpAbsence.TabStop = false;
             this.GrpAbsence.Text = "Gestion des absences";
             // 
-            // BtnAnnulerAjoutAbsence
+            // BtnAnnulerAbsence
             // 
-            this.BtnAnnulerAjoutAbsence.Location = new System.Drawing.Point(725, 110);
-            this.BtnAnnulerAjoutAbsence.Name = "BtnAnnulerAjoutAbsence";
-            this.BtnAnnulerAjoutAbsence.Size = new System.Drawing.Size(130, 34);
-            this.BtnAnnulerAjoutAbsence.TabIndex = 15;
-            this.BtnAnnulerAjoutAbsence.Text = "Annuler";
-            this.BtnAnnulerAjoutAbsence.UseVisualStyleBackColor = true;
+            this.BtnAnnulerAbsence.Location = new System.Drawing.Point(725, 110);
+            this.BtnAnnulerAbsence.Name = "BtnAnnulerAbsence";
+            this.BtnAnnulerAbsence.Size = new System.Drawing.Size(130, 34);
+            this.BtnAnnulerAbsence.TabIndex = 15;
+            this.BtnAnnulerAbsence.Text = "Annuler";
+            this.BtnAnnulerAbsence.UseVisualStyleBackColor = true;
             // 
-            // BtnValiderAjoutAbsence
+            // BtnValiderAbsence
             // 
-            this.BtnValiderAjoutAbsence.Location = new System.Drawing.Point(569, 110);
-            this.BtnValiderAjoutAbsence.Name = "BtnValiderAjoutAbsence";
-            this.BtnValiderAjoutAbsence.Size = new System.Drawing.Size(130, 34);
-            this.BtnValiderAjoutAbsence.TabIndex = 15;
-            this.BtnValiderAjoutAbsence.Text = "Valider";
-            this.BtnValiderAjoutAbsence.UseVisualStyleBackColor = true;
+            this.BtnValiderAbsence.Location = new System.Drawing.Point(569, 110);
+            this.BtnValiderAbsence.Name = "BtnValiderAbsence";
+            this.BtnValiderAbsence.Size = new System.Drawing.Size(130, 34);
+            this.BtnValiderAbsence.TabIndex = 15;
+            this.BtnValiderAbsence.Text = "Valider";
+            this.BtnValiderAbsence.UseVisualStyleBackColor = true;
             // 
             // DtpFin
             // 
@@ -447,10 +448,10 @@ namespace MediaTek86.vue
         private System.Windows.Forms.ComboBox CboMotif;
         private System.Windows.Forms.DateTimePicker DtpFin;
         private System.Windows.Forms.DateTimePicker DtpDebut;
-        private System.Windows.Forms.Button BtnAnnulerAjoutPers;
-        private System.Windows.Forms.Button BtnValiderAjoutPers;
-        private System.Windows.Forms.Button BtnAnnulerAjoutAbsence;
-        private System.Windows.Forms.Button BtnValiderAjoutAbsence;
+        private System.Windows.Forms.Button BtnAnnulerPers;
+        private System.Windows.Forms.Button BtnValiderPers;
+        private System.Windows.Forms.Button BtnAnnulerAbsence;
+        private System.Windows.Forms.Button BtnValiderAbsence;
         private System.Windows.Forms.Button BtnAbsence;
         private System.Windows.Forms.GroupBox GrpListe;
         private System.Windows.Forms.Button BtnRetourListe;

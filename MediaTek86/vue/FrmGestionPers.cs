@@ -57,6 +57,7 @@ namespace MediaTek86.vue
             List<Personnel> lesPersonnels = controle.GetLesPersonnels();
             bdgPersonnels.DataSource = lesPersonnels;
             DgvListePersonnel.DataSource = bdgPersonnels;
+            DgvListePersonnel.Columns["idservice"].Visible = false;
             DgvListePersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
@@ -112,10 +113,43 @@ namespace MediaTek86.vue
         private void BtnAnnulerAjoutPers_Click(object sender, EventArgs e)
         {
             Init();
-            TxtMail.Text = "";
-            TxtNom.Text = "";
-            TxtPrenom.Text = "";
-            TxtTel.Text = "";
+            ViderChamps("Ajout");
+        }
+
+        /// <summary>
+        /// Demande d'ajout d'un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnValiderAjoutPers_Click(object sender, EventArgs e)
+        {
+            if (!TxtNom.Text.Equals("") && !TxtPrenom.Text.Equals("") && !TxtTel.Text.Equals("") && !TxtMail.Text.Equals("") && CboService.SelectedIndex != -1)
+            {
+                Service unService = (Service)bdgService.List[bdgService.Position];
+                Personnel unPersonnel = new Personnel(TxtNom.Text, TxtPrenom.Text, TxtTel.Text, TxtMail.Text, unService.Idservice, unService.Nom);
+                controle.AjoutPersonnel(unPersonnel);
+            }
+            else
+            {
+                MessageBox.Show("Tous les champs doivent être remplis.", "Information");
+            }
+            Init();
+            ViderChamps("Ajout");
+        }
+
+        /// <summary>
+        /// méthode pour vider les champs
+        /// </summary>
+        /// <param name="type"></param>
+        private void ViderChamps(string type)
+        {
+            if (type.Equals("Ajout"))
+            {
+                TxtMail.Text = "";
+                TxtNom.Text = "";
+                TxtPrenom.Text = "";
+                TxtTel.Text = "";
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ namespace MediaTek86.modele
         private readonly string prenom;
         private readonly string tel;
         private readonly string mail;
+        private readonly int idservice;
         private readonly string service;
 
         /// <summary>
@@ -36,6 +37,10 @@ namespace MediaTek86.modele
         /// <summary>
         /// Getter sur service
         /// </summary>
+        public int IdService { get => idservice; }
+        /// <summary>
+        /// Getter sur service
+        /// </summary>
         public string Service { get => service; }
 
         /// <summary>
@@ -45,14 +50,16 @@ namespace MediaTek86.modele
         /// <param name="prenom"></param>
         /// <param name="tel"></param>
         /// <param name="mail"></param>
-        /// <param name="service"></param>
-        public Personnel(string nom, string prenom, string tel, string mail, string service)
+        /// <param name="idservice"></param>
+        /// <param name="service">nom du service</param>
+        public Personnel(string nom, string prenom, string tel, string mail, int idservice, string service)
         {
             this.nom = nom;
             this.prenom = prenom;
             this.tel = tel;
             this.mail = mail;
-            this.service = service;
+            this.idservice = idservice;
+            this.service = service; 
         }
     }
 }

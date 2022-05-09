@@ -65,5 +65,14 @@ namespace MediaTek86.controleur
         {
             return AccesDonnees.GetLesServices();
         }
+
+        /// <summary>
+        /// Demande d'ajout d'un personnel
+        /// </summary>
+        /// <param name="personnel"></param>
+        public void AjoutPersonnel(Personnel personnel)
+        {
+            AccesDonnees.AjoutPersonnel(personnel);
+        }
     }
 }
