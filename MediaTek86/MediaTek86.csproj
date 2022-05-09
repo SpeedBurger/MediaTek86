@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\MediaTek86.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,11 +57,17 @@
     <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="connexion\ConnexionBdd.cs" />
+    <Compile Include="dal\AccesDonnees.cs" />
     <Compile Include="gestionpersDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>gestionpersDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="modele\Absence.cs" />
+    <Compile Include="modele\Motif.cs" />
+    <Compile Include="modele\Personnel.cs" />
+    <Compile Include="modele\Service.cs" />
     <Compile Include="vue\FrmAuthentification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,7 +123,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="controleur\" />
-    <Folder Include="modele\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
