@@ -67,6 +67,15 @@ namespace MediaTek86.controleur
         }
 
         /// <summary>
+        /// Récupère et retourne les absences provenant de la BDD
+        /// </summary>
+        /// <returns>liste des absences</returns>
+        public List<Absence> GetLesAbsences(int idpersonnel)
+        {
+            return AccesDonnees.GetLesAbsences(idpersonnel);
+        }
+
+        /// <summary>
         /// Demande d'ajout d'un personnel
         /// </summary>
         /// <param name="personnel"></param>

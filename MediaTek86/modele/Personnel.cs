@@ -20,7 +20,7 @@ namespace MediaTek86.modele
         private readonly string service;
 
         /// <summary>
-        /// Getter sur nom
+        /// Getter sur idpersonnel
         /// </summary>
         public int IdPersonnel { get => idpersonnel; }
         /// <summary>

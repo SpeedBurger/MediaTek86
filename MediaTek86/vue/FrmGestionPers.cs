@@ -20,6 +20,10 @@ namespace MediaTek86.vue
         /// </summary>
         private Boolean Modif = false;
         /// <summary>
+        /// Booléen pour savoir si l'on est dans la partie gestion des absences
+        /// </summary>
+        private Boolean GestionAbsence = false;
+        /// <summary>
         /// Objet pour gérer la liste des personnels
         /// </summary>
         private readonly BindingSource bdgPersonnels = new BindingSource();
@@ -27,6 +31,10 @@ namespace MediaTek86.vue
         /// Objet pour gérer la liste des profils
         /// </summary>
         private readonly BindingSource bdgService = new BindingSource();
+        /// <summary>
+        /// Objet pour gérer la liste des absences
+        /// </summary>
+        private readonly BindingSource bdgAbsence = new BindingSource();
         /// <summary>
         /// constructeur de la FrmGestionPers
         /// </summary>
@@ -44,13 +52,11 @@ namespace MediaTek86.vue
         public void Init()
         {
             RemplirListePersonnel();
+            GestionAbsence = false;
             GrpListe.Enabled = true;
+            DgvListePersonnel.Enabled = true;
             GrpAbsence.Enabled = false;
             GrpAjoutPers.Enabled = false;
-            BtnAjouterAbsence.Visible = false;
-            BtnModifierAbsence.Visible = false;
-            BtnSupprimerAbsence.Visible = false;
-            BtnRetourListe.Visible = false;
         }
 
         /// <summary>
@@ -63,6 +69,20 @@ namespace MediaTek86.vue
             DgvListePersonnel.DataSource = bdgPersonnels;
             DgvListePersonnel.Columns["idservice"].Visible = false;
             DgvListePersonnel.Columns["idpersonnel"].Visible = false;
+            DgvListePersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
+        /// <summary>
+        /// Affiche les absences
+        /// </summary>
+        public void RemplirListeAbsence()
+        {
+            int idpersonnel = (int)DgvListePersonnel.SelectedRows[0].Cells["idpersonnel"].Value;
+            List<Absence> lesAbsences = controle.GetLesAbsences(idpersonnel);
+            bdgAbsence.DataSource = lesAbsences;
+            DgvListePersonnel.DataSource = bdgAbsence;
+            DgvListePersonnel.Columns["idpersonnel"].Visible = false;
+            DgvListePersonnel.Columns["idmotif"].Visible = false;
             DgvListePersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
@@ -85,28 +105,33 @@ namespace MediaTek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnAjouterPersonnel_Click(object sender, EventArgs e)
+        private void BtnAjouter_Click(object sender, EventArgs e)
         {
-            RemplissageCboService();
-            EnCoursDeModif("Ajout");
+            if (!GestionAbsence)
+            {
+                RemplissageCboService();
+                GestionAffichage("Ajout");
+            }
         }
 
         /// <summary>
         /// methode permettant de gerer les accessibilité en cours d'ajout ou de modif d'un personnel ou d'une absence
         /// </summary>
         /// <param name="type"></param>
-        private void EnCoursDeModif(string type)
+        private void GestionAffichage(string type)
         {
             GrpListe.Enabled = false;
             if (type.Equals("Ajout"))
             {
                 GrpAbsence.Enabled = false;
                 GrpAjoutPers.Enabled = true;
+                DgvListePersonnel.Enabled = false;
             }
             else
             {
                 GrpAjoutPers.Enabled = false;
                 GrpAbsence.Enabled = true;
+                DgvListePersonnel.Enabled = false;
             }
         }
 
@@ -128,8 +153,6 @@ namespace MediaTek86.vue
         /// <param name="e"></param>
         private void BtnValiderPers_Click(object sender, EventArgs e)
         {
-
-
             if (!TxtNom.Text.Equals("") && !TxtPrenom.Text.Equals("") && !TxtTel.Text.Equals("") && !TxtMail.Text.Equals("") && CboService.SelectedIndex != -1)
             {
                 Service unService = (Service)bdgService.List[bdgService.Position];
@@ -178,22 +201,25 @@ namespace MediaTek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnSupprimerPerso_Click(object sender, EventArgs e)
+        private void BtnSupprimer_Click(object sender, EventArgs e)
         {
-            if (DgvListePersonnel.SelectedRows.Count > 0)
+            if (!GestionAbsence)
             {
-                Personnel unPersonnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
-                if (MessageBox.Show("Voulez-vous vraiment supprimer " + unPersonnel.Nom + " " + unPersonnel.Prenom + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (DgvListePersonnel.SelectedRows.Count > 0)
                 {
-                    controle.SuppPersonnel(unPersonnel);
-                    Init();
+                    Personnel unPersonnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
+                    if (MessageBox.Show("Voulez-vous vraiment supprimer " + unPersonnel.Nom + " " + unPersonnel.Prenom + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        controle.SuppPersonnel(unPersonnel);
+                        Init();
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+                }
+                Init();
             }
-            else
-            {
-                MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
-            }
-            Init();
         }
 
         /// <summary>
@@ -201,24 +227,55 @@ namespace MediaTek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnModifierPerso_Click(object sender, EventArgs e)
+        private void BtnModifier_Click(object sender, EventArgs e)
         {
-            if (DgvListePersonnel.SelectedRows.Count > 0)
+            if (!GestionAbsence)
             {
-                Modif = true;
-                EnCoursDeModif("Ajout");
-                RemplissageCboService();
-                Personnel unPersonnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
-                TxtNom.Text = unPersonnel.Nom;
-                TxtPrenom.Text = unPersonnel.Prenom;
-                TxtMail.Text = unPersonnel.Mail;
-                TxtTel.Text = unPersonnel.Tel;
-                CboService.SelectedItem = unPersonnel.IdService;
+                if (DgvListePersonnel.SelectedRows.Count > 0)
+                {
+                    DgvListePersonnel.Enabled = false;
+                    Modif = true;
+                    GestionAffichage("Ajout");
+                    RemplissageCboService();
+                    Personnel unPersonnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
+                    TxtNom.Text = unPersonnel.Nom;
+                    TxtPrenom.Text = unPersonnel.Prenom;
+                    TxtMail.Text = unPersonnel.Mail;
+                    TxtTel.Text = unPersonnel.Tel;
+                    CboService.SelectedItem = unPersonnel.IdService;
+                }
+                else
+                {
+                    MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Bouton pour gerer les absences d'un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAbsence_Click(object sender, EventArgs e)
+        {
+            if (BtnAbsence.Text.Equals("Retour à la liste"))
+            {
+                Init();
+                BtnAbsence.Text = "Afficher les absences";
             }
             else
             {
-                MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+                if (DgvListePersonnel.SelectedRows.Count > 0)
+                {
+                    RemplirListeAbsence();
+                    GestionAbsence = true;
+                    BtnAbsence.Text = "Retour à la liste";
+                }
+                else
+                {
+                    MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+                }
             }
-        }
+        } 
     }
 }

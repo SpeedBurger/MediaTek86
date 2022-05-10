@@ -43,9 +43,9 @@ namespace MediaTek86.vue
             this.TxtTel = new System.Windows.Forms.TextBox();
             this.TxtPrenom = new System.Windows.Forms.TextBox();
             this.TxtNom = new System.Windows.Forms.TextBox();
-            this.BtnSupprimerPerso = new System.Windows.Forms.Button();
-            this.BtnModifierPerso = new System.Windows.Forms.Button();
-            this.BtnAjouterPersonnel = new System.Windows.Forms.Button();
+            this.BtnSupprimer = new System.Windows.Forms.Button();
+            this.BtnModifier = new System.Windows.Forms.Button();
+            this.BtnAjouter = new System.Windows.Forms.Button();
             this.GrpAbsence = new System.Windows.Forms.GroupBox();
             this.BtnAnnulerAbsence = new System.Windows.Forms.Button();
             this.BtnValiderAbsence = new System.Windows.Forms.Button();
@@ -58,11 +58,7 @@ namespace MediaTek86.vue
             this.LblNom2 = new System.Windows.Forms.Label();
             this.CboMotif = new System.Windows.Forms.ComboBox();
             this.BtnAbsence = new System.Windows.Forms.Button();
-            this.BtnSupprimerAbsence = new System.Windows.Forms.Button();
-            this.BtnModifierAbsence = new System.Windows.Forms.Button();
-            this.BtnAjouterAbsence = new System.Windows.Forms.Button();
             this.GrpListe = new System.Windows.Forms.GroupBox();
-            this.BtnRetourListe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListePersonnel)).BeginInit();
             this.GrpAjoutPers.SuspendLayout();
             this.GrpAbsence.SuspendLayout();
@@ -202,35 +198,35 @@ namespace MediaTek86.vue
             this.TxtNom.Size = new System.Drawing.Size(246, 26);
             this.TxtNom.TabIndex = 0;
             // 
-            // BtnSupprimerPerso
+            // BtnSupprimer
             // 
-            this.BtnSupprimerPerso.Location = new System.Drawing.Point(158, 400);
-            this.BtnSupprimerPerso.Name = "BtnSupprimerPerso";
-            this.BtnSupprimerPerso.Size = new System.Drawing.Size(130, 34);
-            this.BtnSupprimerPerso.TabIndex = 12;
-            this.BtnSupprimerPerso.Text = "Supprimer";
-            this.BtnSupprimerPerso.UseVisualStyleBackColor = true;
-            this.BtnSupprimerPerso.Click += new System.EventHandler(this.BtnSupprimerPerso_Click);
+            this.BtnSupprimer.Location = new System.Drawing.Point(158, 400);
+            this.BtnSupprimer.Name = "BtnSupprimer";
+            this.BtnSupprimer.Size = new System.Drawing.Size(130, 34);
+            this.BtnSupprimer.TabIndex = 12;
+            this.BtnSupprimer.Text = "Supprimer";
+            this.BtnSupprimer.UseVisualStyleBackColor = true;
+            this.BtnSupprimer.Click += new System.EventHandler(this.BtnSupprimer_Click);
             // 
-            // BtnModifierPerso
+            // BtnModifier
             // 
-            this.BtnModifierPerso.Location = new System.Drawing.Point(12, 401);
-            this.BtnModifierPerso.Name = "BtnModifierPerso";
-            this.BtnModifierPerso.Size = new System.Drawing.Size(130, 34);
-            this.BtnModifierPerso.TabIndex = 11;
-            this.BtnModifierPerso.Text = "Modifier";
-            this.BtnModifierPerso.UseVisualStyleBackColor = true;
-            this.BtnModifierPerso.Click += new System.EventHandler(this.BtnModifierPerso_Click);
+            this.BtnModifier.Location = new System.Drawing.Point(12, 400);
+            this.BtnModifier.Name = "BtnModifier";
+            this.BtnModifier.Size = new System.Drawing.Size(130, 34);
+            this.BtnModifier.TabIndex = 11;
+            this.BtnModifier.Text = "Modifier";
+            this.BtnModifier.UseVisualStyleBackColor = true;
+            this.BtnModifier.Click += new System.EventHandler(this.BtnModifier_Click);
             // 
-            // BtnAjouterPersonnel
+            // BtnAjouter
             // 
-            this.BtnAjouterPersonnel.Location = new System.Drawing.Point(303, 400);
-            this.BtnAjouterPersonnel.Name = "BtnAjouterPersonnel";
-            this.BtnAjouterPersonnel.Size = new System.Drawing.Size(130, 34);
-            this.BtnAjouterPersonnel.TabIndex = 10;
-            this.BtnAjouterPersonnel.Text = "Ajouter";
-            this.BtnAjouterPersonnel.UseVisualStyleBackColor = true;
-            this.BtnAjouterPersonnel.Click += new System.EventHandler(this.BtnAjouterPersonnel_Click);
+            this.BtnAjouter.Location = new System.Drawing.Point(305, 400);
+            this.BtnAjouter.Name = "BtnAjouter";
+            this.BtnAjouter.Size = new System.Drawing.Size(130, 34);
+            this.BtnAjouter.TabIndex = 10;
+            this.BtnAjouter.Text = "Ajouter";
+            this.BtnAjouter.UseVisualStyleBackColor = true;
+            this.BtnAjouter.Click += new System.EventHandler(this.BtnAjouter_Click);
             // 
             // GrpAbsence
             // 
@@ -344,60 +340,21 @@ namespace MediaTek86.vue
             this.BtnAbsence.TabIndex = 16;
             this.BtnAbsence.Text = "Afficher les absences";
             this.BtnAbsence.UseVisualStyleBackColor = true;
-            // 
-            // BtnSupprimerAbsence
-            // 
-            this.BtnSupprimerAbsence.Location = new System.Drawing.Point(158, 401);
-            this.BtnSupprimerAbsence.Name = "BtnSupprimerAbsence";
-            this.BtnSupprimerAbsence.Size = new System.Drawing.Size(130, 34);
-            this.BtnSupprimerAbsence.TabIndex = 12;
-            this.BtnSupprimerAbsence.Text = "Supprimer";
-            this.BtnSupprimerAbsence.UseVisualStyleBackColor = true;
-            // 
-            // BtnModifierAbsence
-            // 
-            this.BtnModifierAbsence.Location = new System.Drawing.Point(12, 400);
-            this.BtnModifierAbsence.Name = "BtnModifierAbsence";
-            this.BtnModifierAbsence.Size = new System.Drawing.Size(130, 34);
-            this.BtnModifierAbsence.TabIndex = 11;
-            this.BtnModifierAbsence.Text = "Modifier";
-            this.BtnModifierAbsence.UseVisualStyleBackColor = true;
-            // 
-            // BtnAjouterAbsence
-            // 
-            this.BtnAjouterAbsence.Location = new System.Drawing.Point(303, 401);
-            this.BtnAjouterAbsence.Name = "BtnAjouterAbsence";
-            this.BtnAjouterAbsence.Size = new System.Drawing.Size(130, 34);
-            this.BtnAjouterAbsence.TabIndex = 10;
-            this.BtnAjouterAbsence.Text = "Ajouter";
-            this.BtnAjouterAbsence.UseVisualStyleBackColor = true;
+            this.BtnAbsence.Click += new System.EventHandler(this.BtnAbsence_Click);
             // 
             // GrpListe
             // 
             this.GrpListe.BackColor = System.Drawing.SystemColors.Control;
-            this.GrpListe.Controls.Add(this.BtnRetourListe);
             this.GrpListe.Controls.Add(this.BtnAbsence);
-            this.GrpListe.Controls.Add(this.BtnAjouterPersonnel);
-            this.GrpListe.Controls.Add(this.BtnModifierPerso);
-            this.GrpListe.Controls.Add(this.BtnSupprimerPerso);
-            this.GrpListe.Controls.Add(this.BtnAjouterAbsence);
-            this.GrpListe.Controls.Add(this.BtnModifierAbsence);
-            this.GrpListe.Controls.Add(this.BtnSupprimerAbsence);
+            this.GrpListe.Controls.Add(this.BtnAjouter);
+            this.GrpListe.Controls.Add(this.BtnModifier);
+            this.GrpListe.Controls.Add(this.BtnSupprimer);
             this.GrpListe.Location = new System.Drawing.Point(0, 12);
             this.GrpListe.Name = "GrpListe";
             this.GrpListe.Size = new System.Drawing.Size(892, 446);
             this.GrpListe.TabIndex = 14;
             this.GrpListe.TabStop = false;
-            this.GrpListe.Text = "Liste du personnel";
-            // 
-            // BtnRetourListe
-            // 
-            this.BtnRetourListe.Location = new System.Drawing.Point(450, 400);
-            this.BtnRetourListe.Name = "BtnRetourListe";
-            this.BtnRetourListe.Size = new System.Drawing.Size(197, 34);
-            this.BtnRetourListe.TabIndex = 17;
-            this.BtnRetourListe.Text = "Retour à la liste";
-            this.BtnRetourListe.UseVisualStyleBackColor = true;
+            this.GrpListe.Text = ".";
             // 
             // FrmGestionPers
             // 
@@ -434,15 +391,12 @@ namespace MediaTek86.vue
         private System.Windows.Forms.TextBox TxtPrenom;
         private System.Windows.Forms.TextBox TxtNom;
         private System.Windows.Forms.Label LblMail;
-        private System.Windows.Forms.Button BtnSupprimerPerso;
-        private System.Windows.Forms.Button BtnModifierPerso;
-        private System.Windows.Forms.Button BtnAjouterPersonnel;
+        private System.Windows.Forms.Button BtnSupprimer;
+        private System.Windows.Forms.Button BtnModifier;
+        private System.Windows.Forms.Button BtnAjouter;
         private System.Windows.Forms.Label LblTel;
         private System.Windows.Forms.GroupBox GrpAbsence;
         private System.Windows.Forms.ComboBox CboNom;
-        private System.Windows.Forms.Button BtnSupprimerAbsence;
-        private System.Windows.Forms.Button BtnModifierAbsence;
-        private System.Windows.Forms.Button BtnAjouterAbsence;
         private System.Windows.Forms.Label LblDebut;
         private System.Windows.Forms.Label LblMotif;
         private System.Windows.Forms.Label LblFin;
@@ -456,6 +410,5 @@ namespace MediaTek86.vue
         private System.Windows.Forms.Button BtnValiderAbsence;
         private System.Windows.Forms.Button BtnAbsence;
         private System.Windows.Forms.GroupBox GrpListe;
-        private System.Windows.Forms.Button BtnRetourListe;
     }
 }

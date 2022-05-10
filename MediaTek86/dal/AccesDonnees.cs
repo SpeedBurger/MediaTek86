@@ -101,6 +101,28 @@ namespace MediaTek86.dal
         }
 
         /// <summary>
+        /// Récupère et retourne les absences provenant de la BDD
+        /// </summary>
+        /// <returns>liste des absences</returns>
+        public static List<Absence> GetLesAbsences(int idpersonnel)
+        {
+            List<Absence> lesAbsences = new List<Absence>();
+            string req = "select p.idpersonnel as idpersonnel, a.datedebut as datedebut, a.datefin as datefin, m.idmotif as idmotif, m.libelle as libelle from absence a ";
+            req += "join personnel p using(idpersonnel) join motif m using(idmotif) where idpersonnel = @idpersonnel order by datedebut desc;";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", idpersonnel);
+            ConnexionBdd curs = ConnexionBdd.GetInstance(connectionString);
+            curs.ReqSelect(req, parameters);
+            while (curs.Read())
+            {
+                Absence uneAbsence = new Absence((int)curs.Field("idpersonnel"), (int)curs.Field("idmotif"), (string)curs.Field("libelle"), (DateTime)curs.Field("datedebut"), (DateTime)curs.Field("datefin"));
+                lesAbsences.Add(uneAbsence);
+            }
+            curs.Close();
+            return lesAbsences;
+        }
+
+        /// <summary>
         /// Ajoute un personnel
         /// </summary>
         /// <param name="personnel"></param>
