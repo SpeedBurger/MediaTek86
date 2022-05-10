@@ -256,6 +256,7 @@ namespace MediaTek86.vue
             this.BtnAnnulerAbsence.TabIndex = 15;
             this.BtnAnnulerAbsence.Text = "Annuler";
             this.BtnAnnulerAbsence.UseVisualStyleBackColor = true;
+            this.BtnAnnulerAbsence.Click += new System.EventHandler(this.BtnAnnulerAbsence_Click);
             // 
             // BtnValiderAbsence
             // 
@@ -268,10 +269,14 @@ namespace MediaTek86.vue
             // 
             // DtpFin
             // 
+            this.DtpFin.CustomFormat = "";
             this.DtpFin.Location = new System.Drawing.Point(406, 67);
+            this.DtpFin.MaxDate = new System.DateTime(9922, 5, 10, 0, 0, 0, 0);
+            this.DtpFin.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             this.DtpFin.Name = "DtpFin";
             this.DtpFin.Size = new System.Drawing.Size(200, 26);
             this.DtpFin.TabIndex = 15;
+            this.DtpFin.Value = new System.DateTime(2022, 5, 10, 15, 58, 6, 0);
             // 
             // DtpDebut
             // 
@@ -279,6 +284,7 @@ namespace MediaTek86.vue
             this.DtpDebut.Name = "DtpDebut";
             this.DtpDebut.Size = new System.Drawing.Size(200, 26);
             this.DtpDebut.TabIndex = 14;
+            this.DtpDebut.Value = new System.DateTime(2022, 5, 10, 15, 58, 15, 0);
             // 
             // CboNom
             // 
@@ -354,7 +360,6 @@ namespace MediaTek86.vue
             this.GrpListe.Size = new System.Drawing.Size(892, 446);
             this.GrpListe.TabIndex = 14;
             this.GrpListe.TabStop = false;
-            this.GrpListe.Text = ".";
             // 
             // FrmGestionPers
             // 

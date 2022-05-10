@@ -101,5 +101,14 @@ namespace MediaTek86.controleur
         {
             AccesDonnees.UpdatePersonnel(unPersonnel);
         }
+
+        /// <summary>
+        /// Demande de suppression d'une absence
+        /// </summary>
+        /// <param name="uneAbsence"></param>
+        public void SuppAbsence(Absence uneAbsence)
+        {
+            AccesDonnees.SuppAbsence(uneAbsence);
+        }
     }
 }

@@ -194,6 +194,10 @@ namespace MediaTek86.vue
                 TxtPrenom.Text = "";
                 TxtTel.Text = "";
             }
+            else
+            {
+
+            }
         }
 
         /// <summary>
@@ -219,6 +223,22 @@ namespace MediaTek86.vue
                     MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
                 }
                 Init();
+            }
+            else
+            {
+                if (DgvListePersonnel.SelectedRows.Count > 0)
+                {
+                    Absence uneAbsence = (Absence)bdgAbsence.List[bdgAbsence.Position];
+                    if (MessageBox.Show("Voulez-vous vraiment supprimer l'absence ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        controle.SuppAbsence(uneAbsence);
+                        RemplirListeAbsence();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+                }
             }
         }
 
@@ -276,6 +296,12 @@ namespace MediaTek86.vue
                     MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
                 }
             }
-        } 
+        }
+
+        private void BtnAnnulerAbsence_Click(object sender, EventArgs e)
+        {
+            Init();
+            ViderChamps("");
+        }
     }
 }
