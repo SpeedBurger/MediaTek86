@@ -93,7 +93,6 @@ namespace MediaTek86.vue
             this.Controls.Add(this.BtnConnecter);
             this.Name = "FrmAuthentification";
             this.Text = "Authentification";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmAuthentification_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

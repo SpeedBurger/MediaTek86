@@ -119,7 +119,7 @@ namespace MediaTek86.vue
             this.BtnValiderPers.TabIndex = 13;
             this.BtnValiderPers.Text = "Valider";
             this.BtnValiderPers.UseVisualStyleBackColor = true;
-            this.BtnValiderPers.Click += new System.EventHandler(this.BtnValiderAjoutPers_Click);
+            this.BtnValiderPers.Click += new System.EventHandler(this.BtnValiderPers_Click);
             // 
             // LblTel
             // 
@@ -220,6 +220,7 @@ namespace MediaTek86.vue
             this.BtnModifierPerso.TabIndex = 11;
             this.BtnModifierPerso.Text = "Modifier";
             this.BtnModifierPerso.UseVisualStyleBackColor = true;
+            this.BtnModifierPerso.Click += new System.EventHandler(this.BtnModifierPerso_Click);
             // 
             // BtnAjouterPersonnel
             // 

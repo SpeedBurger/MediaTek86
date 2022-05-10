@@ -130,6 +130,25 @@ namespace MediaTek86.dal
             ConnexionBdd conn = ConnexionBdd.GetInstance(connectionString);
             conn.ReqUpdate(req, parameters);
         }
+
+        /// <summary>
+        /// Modification d'un personnel
+        /// </summary>
+        /// <param name="personnel"></param>
+        public static void UpdatePersonnel(Personnel personnel)
+        {
+            string req = "update personnel set nom = @nom, prenom = @prenom, tel = @tel, mail = @mail, idservice = @idservice ";
+            req += "where idpersonnel = @idpersonnel;";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", personnel.IdPersonnel);
+            parameters.Add("@nom", personnel.Nom);
+            parameters.Add("@prenom", personnel.Prenom);
+            parameters.Add("@tel", personnel.Tel);
+            parameters.Add("@mail", personnel.Mail);
+            parameters.Add("@idservice", personnel.IdService);
+            ConnexionBdd conn = ConnexionBdd.GetInstance(connectionString);
+            conn.ReqUpdate(req, parameters);
+        }
     }
 
 }

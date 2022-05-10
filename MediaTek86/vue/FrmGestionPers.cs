@@ -16,6 +16,10 @@ namespace MediaTek86.vue
         /// </summary>
         private readonly Controle controle;
         /// <summary>
+        /// Booléen pour savoir si une modification est demandée
+        /// </summary>
+        private Boolean Modif = false;
+        /// <summary>
         /// Objet pour gérer la liste des personnels
         /// </summary>
         private readonly BindingSource bdgPersonnels = new BindingSource();
@@ -122,21 +126,36 @@ namespace MediaTek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnValiderAjoutPers_Click(object sender, EventArgs e)
+        private void BtnValiderPers_Click(object sender, EventArgs e)
         {
+
+
             if (!TxtNom.Text.Equals("") && !TxtPrenom.Text.Equals("") && !TxtTel.Text.Equals("") && !TxtMail.Text.Equals("") && CboService.SelectedIndex != -1)
             {
-                int idpersonnel = 0;
                 Service unService = (Service)bdgService.List[bdgService.Position];
+                int idpersonnel = 0;
+                if (Modif)
+                {
+                    idpersonnel = (int)DgvListePersonnel.SelectedRows[0].Cells["idpersonnel"].Value;
+                }
                 Personnel unPersonnel = new Personnel(idpersonnel, TxtNom.Text, TxtPrenom.Text, TxtTel.Text, TxtMail.Text, unService.Idservice, unService.Nom);
-                controle.AjoutPersonnel(unPersonnel);
+
+                if (Modif)
+                {
+                    controle.UpdatePersonnel(unPersonnel);
+                    Modif = false;
+                }
+                else
+                {
+                    controle.AjoutPersonnel(unPersonnel);
+                }
+                Init();
+                ViderChamps("Ajout");
             }
             else
             {
                 MessageBox.Show("Tous les champs doivent être remplis.", "Information");
             }
-            Init();
-            ViderChamps("Ajout");
         }
 
         /// <summary>
@@ -175,6 +194,31 @@ namespace MediaTek86.vue
                 MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
             }
             Init();
+        }
+
+        /// <summary>
+        /// Bouton servant a modifier les données d'un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnModifierPerso_Click(object sender, EventArgs e)
+        {
+            if (DgvListePersonnel.SelectedRows.Count > 0)
+            {
+                Modif = true;
+                EnCoursDeModif("Ajout");
+                RemplissageCboService();
+                Personnel unPersonnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
+                TxtNom.Text = unPersonnel.Nom;
+                TxtPrenom.Text = unPersonnel.Prenom;
+                TxtMail.Text = unPersonnel.Mail;
+                TxtTel.Text = unPersonnel.Tel;
+                CboService.SelectedItem = unPersonnel.IdService;
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+            }
         }
     }
 }

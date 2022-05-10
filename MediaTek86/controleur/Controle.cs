@@ -83,5 +83,14 @@ namespace MediaTek86.controleur
         {
             AccesDonnees.SuppPersonnel(unPersonnel);
         }
+
+        /// <summary>
+        /// Demande de modification d'un personnel
+        /// </summary>
+        /// <param name="unPersonnel"></param>
+        public void UpdatePersonnel(Personnel unPersonnel)
+        {
+            AccesDonnees.UpdatePersonnel(unPersonnel);
+        }
     }
 }
