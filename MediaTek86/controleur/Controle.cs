@@ -67,6 +67,15 @@ namespace MediaTek86.controleur
         }
 
         /// <summary>
+        /// Récupère et retourne les noms des motifs provenant de la BDD
+        /// </summary>
+        /// <returns>liste des motifs</returns>
+        public List<Motif> GetLesMotifs()
+        {
+            return AccesDonnees.GetLesMotifs();
+        }
+
+        /// <summary>
         /// Récupère et retourne les absences provenant de la BDD
         /// </summary>
         /// <returns>liste des absences</returns>

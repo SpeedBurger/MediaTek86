@@ -28,13 +28,17 @@ namespace MediaTek86.vue
         /// </summary>
         private readonly BindingSource bdgPersonnels = new BindingSource();
         /// <summary>
-        /// Objet pour gérer la liste des profils
+        /// Objet pour gérer la liste des services
         /// </summary>
         private readonly BindingSource bdgService = new BindingSource();
         /// <summary>
         /// Objet pour gérer la liste des absences
         /// </summary>
         private readonly BindingSource bdgAbsence = new BindingSource();
+        /// <summary>
+        /// Objet pour gérer la liste des motifs
+        /// </summary>
+        private readonly BindingSource bdgMotif = new BindingSource();
         /// <summary>
         /// constructeur de la FrmGestionPers
         /// </summary>
@@ -52,6 +56,8 @@ namespace MediaTek86.vue
         public void Init()
         {
             RemplirListePersonnel();
+            RemplissageCboService();
+            RemplissageCboMotif();
             GestionAbsence = false;
             GrpListe.Enabled = true;
             DgvListePersonnel.Enabled = true;
@@ -87,7 +93,7 @@ namespace MediaTek86.vue
         }
 
         /// <summary>
-        /// Affiche les profils
+        ///  Remplit le combo des servcices
         /// </summary>
         public void RemplissageCboService()
         {
@@ -101,6 +107,20 @@ namespace MediaTek86.vue
         }
 
         /// <summary>
+        /// Remplit le combo des motifs
+        /// </summary>
+        public void RemplissageCboMotif()
+        {
+            List<Motif> lesMotifs = controle.GetLesMotifs();
+            bdgMotif.DataSource = lesMotifs;
+            CboMotif.DataSource = bdgMotif;
+            if (CboMotif.Items.Count > 0)
+            {
+                CboMotif.SelectedIndex = 0;
+            }
+        }
+
+        /// <summary>
         /// Evenement clic sur le bouton ajout personnel
         /// </summary>
         /// <param name="sender"></param>
@@ -109,8 +129,11 @@ namespace MediaTek86.vue
         {
             if (!GestionAbsence)
             {
-                RemplissageCboService();
                 GestionAffichage("Ajout");
+            }
+            else
+            {
+                GestionAffichage("Absence");
             }
         }
 
@@ -120,18 +143,30 @@ namespace MediaTek86.vue
         /// <param name="type"></param>
         private void GestionAffichage(string type)
         {
-            GrpListe.Enabled = false;
             if (type.Equals("Ajout"))
             {
                 GrpAbsence.Enabled = false;
                 GrpAjoutPers.Enabled = true;
                 DgvListePersonnel.Enabled = false;
+                GrpListe.Enabled = false;
             }
             else
             {
-                GrpAjoutPers.Enabled = false;
-                GrpAbsence.Enabled = true;
-                DgvListePersonnel.Enabled = false;
+                if (type.Equals("Absence"))
+                {
+                    GrpAjoutPers.Enabled = false;
+                    GrpAbsence.Enabled = true;
+                    DgvListePersonnel.Enabled = false;
+                    GrpListe.Enabled = false;
+                }
+                else
+                {
+                    DgvListePersonnel.Enabled = true;
+                    GrpAjoutPers.Enabled = false;
+                    GrpAbsence.Enabled = false;
+                    GrpListe.Enabled = true;
+                }
+
             }
         }
 
@@ -196,7 +231,9 @@ namespace MediaTek86.vue
             }
             else
             {
-
+                CboMotif.SelectedIndex = 0;
+                DtpDebut.Value = DateTime.Now;
+                DtpFin.Value = DateTime.Now;
             }
         }
 
@@ -300,8 +337,8 @@ namespace MediaTek86.vue
 
         private void BtnAnnulerAbsence_Click(object sender, EventArgs e)
         {
-            Init();
             ViderChamps("");
+            GestionAffichage("");
         }
     }
 }

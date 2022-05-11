@@ -101,6 +101,25 @@ namespace MediaTek86.dal
         }
 
         /// <summary>
+        /// Récupère et retourne les motifs provenant de la BDD
+        /// </summary>
+        /// <returns>liste des motifs</returns>
+        public static List<Motif> GetLesMotifs()
+        {
+            List<Motif> lesMotifs = new List<Motif>();
+            string req = "select * from motif order by libelle;";
+            ConnexionBdd curs = ConnexionBdd.GetInstance(connectionString);
+            curs.ReqSelect(req, null);
+            while (curs.Read())
+            {
+                Motif unMotif = new Motif((int)curs.Field("idmotif"), (string)curs.Field("libelle"));
+                lesMotifs.Add(unMotif);
+            }
+            curs.Close();
+            return lesMotifs;
+        }
+
+        /// <summary>
         /// Récupère et retourne les absences provenant de la BDD
         /// </summary>
         /// <returns>liste des absences</returns>
