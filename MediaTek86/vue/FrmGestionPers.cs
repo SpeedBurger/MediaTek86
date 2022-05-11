@@ -55,14 +55,12 @@ namespace MediaTek86.vue
         /// </summary>
         public void Init()
         {
+            GestionAbsence = false;
             RemplirListePersonnel();
             RemplissageCboService();
             RemplissageCboMotif();
-            GestionAbsence = false;
-            GrpListe.Enabled = true;
-            DgvListePersonnel.Enabled = true;
-            GrpAbsence.Enabled = false;
-            GrpAjoutPers.Enabled = false;
+            GestionAffichage("Init");
+            ViderChamps();
         }
 
         /// <summary>
@@ -143,30 +141,26 @@ namespace MediaTek86.vue
         /// <param name="type"></param>
         private void GestionAffichage(string type)
         {
-            if (type.Equals("Ajout"))
+            switch (type)
             {
-                GrpAbsence.Enabled = false;
-                GrpAjoutPers.Enabled = true;
-                DgvListePersonnel.Enabled = false;
-                GrpListe.Enabled = false;
-            }
-            else
-            {
-                if (type.Equals("Absence"))
-                {
-                    GrpAjoutPers.Enabled = false;
-                    GrpAbsence.Enabled = true;
+                case "Ajout":
+                    GrpAbsence.Enabled = false;
+                    GrpAjoutPers.Enabled = true;
                     DgvListePersonnel.Enabled = false;
                     GrpListe.Enabled = false;
-                }
-                else
-                {
-                    DgvListePersonnel.Enabled = true;
+                    break;
+                case "Absence":
+                    GrpAbsence.Enabled = true;
                     GrpAjoutPers.Enabled = false;
+                    DgvListePersonnel.Enabled = false;
+                    GrpListe.Enabled = false;
+                    break;
+                case "Init":
                     GrpAbsence.Enabled = false;
+                    GrpAjoutPers.Enabled = false;
+                    DgvListePersonnel.Enabled = true;
                     GrpListe.Enabled = true;
-                }
-
+                    break;
             }
         }
 
@@ -178,7 +172,7 @@ namespace MediaTek86.vue
         private void BtnAnnulerAjoutPers_Click(object sender, EventArgs e)
         {
             Init();
-            ViderChamps("Ajout");
+            ViderChamps();
         }
 
         /// <summary>
@@ -208,7 +202,7 @@ namespace MediaTek86.vue
                     controle.AjoutPersonnel(unPersonnel);
                 }
                 Init();
-                ViderChamps("Ajout");
+                ViderChamps();
             }
             else
             {
@@ -220,21 +214,16 @@ namespace MediaTek86.vue
         /// méthode pour vider les champs
         /// </summary>
         /// <param name="type"></param>
-        private void ViderChamps(string type)
+        private void ViderChamps()
         {
-            if (type.Equals("Ajout"))
-            {
-                TxtMail.Text = "";
-                TxtNom.Text = "";
-                TxtPrenom.Text = "";
-                TxtTel.Text = "";
-            }
-            else
-            {
-                CboMotif.SelectedIndex = 0;
-                DtpDebut.Value = DateTime.Now;
-                DtpFin.Value = DateTime.Now;
-            }
+            TxtMail.Text = "";
+            TxtNom.Text = "";
+            TxtPrenom.Text = "";
+            TxtTel.Text = "";
+            CboMotif.SelectedIndex = -1;
+            CboService.SelectedIndex = -1;
+            DtpDebut.Value = DateTime.Now;
+            DtpFin.Value = DateTime.Now;
         }
 
         /// <summary>
@@ -337,8 +326,8 @@ namespace MediaTek86.vue
 
         private void BtnAnnulerAbsence_Click(object sender, EventArgs e)
         {
-            ViderChamps("");
-            GestionAffichage("");
+            ViderChamps();
+            GestionAffichage("Init");
         }
     }
 }
