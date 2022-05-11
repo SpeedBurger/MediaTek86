@@ -88,7 +88,7 @@ namespace MediaTek86.dal
         public static List<Service> GetLesServices()
         {
             List<Service> lesServices = new List<Service>();
-            string req = "select * from service order by nom;";
+            string req = "select * from service order by idservice;";
             ConnexionBdd curs = ConnexionBdd.GetInstance(connectionString);
             curs.ReqSelect(req, null);
             while (curs.Read())
@@ -107,7 +107,7 @@ namespace MediaTek86.dal
         public static List<Motif> GetLesMotifs()
         {
             List<Motif> lesMotifs = new List<Motif>();
-            string req = "select * from motif order by libelle;";
+            string req = "select * from motif order by idmotif;";
             ConnexionBdd curs = ConnexionBdd.GetInstance(connectionString);
             curs.ReqSelect(req, null);
             while (curs.Read())

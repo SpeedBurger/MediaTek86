@@ -98,10 +98,6 @@ namespace MediaTek86.vue
             List<Service> lesServices = controle.GetLesServices();
             bdgService.DataSource = lesServices;
             CboService.DataSource = bdgService;
-            if (CboService.Items.Count > 0)
-            {
-                CboService.SelectedIndex = 0;
-            }
         }
 
         /// <summary>
@@ -112,10 +108,6 @@ namespace MediaTek86.vue
             List<Motif> lesMotifs = controle.GetLesMotifs();
             bdgMotif.DataSource = lesMotifs;
             CboMotif.DataSource = bdgMotif;
-            if (CboMotif.Items.Count > 0)
-            {
-                CboMotif.SelectedIndex = 0;
-            }
         }
 
         /// <summary>
@@ -172,7 +164,6 @@ namespace MediaTek86.vue
         private void BtnAnnulerAjoutPers_Click(object sender, EventArgs e)
         {
             Init();
-            ViderChamps();
         }
 
         /// <summary>
@@ -202,7 +193,6 @@ namespace MediaTek86.vue
                     controle.AjoutPersonnel(unPersonnel);
                 }
                 Init();
-                ViderChamps();
             }
             else
             {
@@ -213,7 +203,6 @@ namespace MediaTek86.vue
         /// <summary>
         /// méthode pour vider les champs
         /// </summary>
-        /// <param name="type"></param>
         private void ViderChamps()
         {
             TxtMail.Text = "";
@@ -279,16 +268,30 @@ namespace MediaTek86.vue
             {
                 if (DgvListePersonnel.SelectedRows.Count > 0)
                 {
-                    DgvListePersonnel.Enabled = false;
                     Modif = true;
                     GestionAffichage("Ajout");
-                    RemplissageCboService();
                     Personnel unPersonnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
                     TxtNom.Text = unPersonnel.Nom;
                     TxtPrenom.Text = unPersonnel.Prenom;
                     TxtMail.Text = unPersonnel.Mail;
                     TxtTel.Text = unPersonnel.Tel;
-                    CboService.SelectedItem = unPersonnel.IdService;
+                    CboService.SelectedIndex = unPersonnel.IdService-1;
+                }
+                else
+                {
+                    MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+                }
+            }
+            else
+            {
+                if (DgvListePersonnel.SelectedRows.Count > 0)
+                {
+                    Modif = true;
+                    GestionAffichage("Absence");
+                    Absence uneAbsence = (Absence)bdgAbsence.List[bdgAbsence.Position];
+                    DtpDebut.Value = uneAbsence.DateDebut;
+                    DtpFin.Value = uneAbsence.DateFin;
+                    CboMotif.SelectedIndex = uneAbsence.IdMotif-1;
                 }
                 else
                 {
