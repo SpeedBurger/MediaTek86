@@ -3,9 +3,6 @@ using MediaTek86.modele;
 using MediaTek86.vue;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MediaTek86.controleur
 {
@@ -112,12 +109,31 @@ namespace MediaTek86.controleur
         }
 
         /// <summary>
+        /// Demande d'ajout d'une absence
+        /// </summary>
+        /// <param name="uneAbsence"/>
+        public void AjoutAbsence(Absence uneAbsence)
+        {
+            AccesDonnees.AjoutAbsence(uneAbsence);
+        }
+
+        /// <summary>
         /// Demande de suppression d'une absence
         /// </summary>
         /// <param name="uneAbsence"></param>
         public void SuppAbsence(Absence uneAbsence)
         {
             AccesDonnees.SuppAbsence(uneAbsence);
+        }
+
+        /// <summary>
+        /// Demande de modification d'une absence
+        /// </summary>
+        /// <param name="uneAbsence"></param>
+        /// <param name="uneDate"></param>
+        public void UpdateAbsence(Absence uneAbsence, DateTime uneDate)
+        {
+          AccesDonnees.UpdateAbsence(uneAbsence, uneDate);
         }
     }
 }

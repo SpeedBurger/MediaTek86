@@ -60,6 +60,9 @@
     <Compile Include="connexion\ConnexionBdd.cs" />
     <Compile Include="controleur\Controle.cs" />
     <Compile Include="dal\AccesDonnees.cs" />
+    <Compile Include="gestionpersDataSet.cs">
+      <DependentUpon>gestionpersDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="gestionpersDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

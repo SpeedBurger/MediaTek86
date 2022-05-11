@@ -162,9 +162,17 @@ namespace MediaTek86.dal
         /// <summary>
         /// Suppression d'un personnel
         /// </summary>
-        /// <param name="personnel">objet developpeur à supprimer</param>
+        /// <param name="personnel">objet personnel à supprimer</param>
         public static void SuppPersonnel(Personnel personnel)
         {
+            //suppression des absences d'un personnel (contrainte)
+            string req2 = "delete from absence where idpersonnel = @idpersonnel;";
+            Dictionary<string, object> parameters2 = new Dictionary<string, object>();
+            parameters2.Add("@idpersonnel", personnel.IdPersonnel);
+            ConnexionBdd connexion = ConnexionBdd.GetInstance(connectionString);
+            connexion.ReqUpdate(req2, parameters2);
+
+            //Supression du personnel
             string req = "delete from personnel where idpersonnel = @idpersonnel;";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@idpersonnel", personnel.IdPersonnel);
@@ -192,6 +200,23 @@ namespace MediaTek86.dal
         }
 
         /// <summary>
+        /// Ajoute une absence
+        /// </summary>
+        /// <param name="uneAbsence"></param>
+        public static void AjoutAbsence(Absence uneAbsence)
+        {
+            string req = "insert into absence(idpersonnel, datedebut, idmotif, datefin) ";
+            req += "values (@idpersonnel, @datedebut, @idmotif, @datefin);";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", uneAbsence.IdPersonnel);
+            parameters.Add("@datedebut", uneAbsence.DateDebut);
+            parameters.Add("@idmotif", uneAbsence.IdMotif);
+            parameters.Add("@datefin", uneAbsence.DateFin);
+            ConnexionBdd conn = ConnexionBdd.GetInstance(connectionString);
+            conn.ReqUpdate(req, parameters);
+        }
+
+        /// <summary>
         /// Suppression d'une absence
         /// </summary>
         /// <param name="uneAbsence">objet absence à supprimer</param>
@@ -201,6 +226,25 @@ namespace MediaTek86.dal
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@idpersonnel", uneAbsence.IdPersonnel);
             parameters.Add("@datedebut", uneAbsence.DateDebut);
+            ConnexionBdd conn = ConnexionBdd.GetInstance(connectionString);
+            conn.ReqUpdate(req, parameters);
+        }
+
+        /// <summary>
+        /// Modification d'une absence
+        /// </summary>
+        /// <param name="uneAbsence"></param>
+        /// <param name="uneDate"></param>
+        public static void UpdateAbsence(Absence uneAbsence, DateTime uneDate)
+        {
+            string req = "update absence set datedebut = @datedebut, idmotif = @idmotif, datefin = @datefin ";
+            req += "where idpersonnel = @idpersonnel and datedebut = @datedebutinit;";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@datedebutinit", uneDate);
+            parameters.Add("@datedebut", uneAbsence.DateDebut);
+            parameters.Add("@idmotif", uneAbsence.IdMotif);
+            parameters.Add("@datefin", uneAbsence.DateFin);
+            parameters.Add("@idpersonnel", uneAbsence.IdPersonnel);
             ConnexionBdd conn = ConnexionBdd.GetInstance(connectionString);
             conn.ReqUpdate(req, parameters);
         }

@@ -40,6 +40,11 @@ namespace MediaTek86.vue
         /// </summary>
         private readonly BindingSource bdgMotif = new BindingSource();
         /// <summary>
+        /// Variable contenant l'idpersonnel d'une personne
+        /// </summary>
+        private int IdPersonnel;
+
+        /// <summary>
         /// constructeur de la FrmGestionPers
         /// </summary>
         /// <param name="controle">Instance de la classe Controle</param>
@@ -56,6 +61,7 @@ namespace MediaTek86.vue
         public void Init()
         {
             GestionAbsence = false;
+            GrpListe.Text = "Liste du personnel";
             RemplirListePersonnel();
             RemplissageCboService();
             RemplissageCboMotif();
@@ -81,8 +87,7 @@ namespace MediaTek86.vue
         /// </summary>
         public void RemplirListeAbsence()
         {
-            int idpersonnel = (int)DgvListePersonnel.SelectedRows[0].Cells["idpersonnel"].Value;
-            List<Absence> lesAbsences = controle.GetLesAbsences(idpersonnel);
+            List<Absence> lesAbsences = controle.GetLesAbsences(IdPersonnel);
             bdgAbsence.DataSource = lesAbsences;
             DgvListePersonnel.DataSource = bdgAbsence;
             DgvListePersonnel.Columns["idpersonnel"].Visible = false;
@@ -111,20 +116,18 @@ namespace MediaTek86.vue
         }
 
         /// <summary>
-        /// Evenement clic sur le bouton ajout personnel
+        /// méthode pour vider les champs
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnAjouter_Click(object sender, EventArgs e)
+        private void ViderChamps()
         {
-            if (!GestionAbsence)
-            {
-                GestionAffichage("Ajout");
-            }
-            else
-            {
-                GestionAffichage("Absence");
-            }
+            TxtMail.Text = "";
+            TxtNom.Text = "";
+            TxtPrenom.Text = "";
+            TxtTel.Text = "";
+            CboMotif.SelectedIndex = -1;
+            CboService.SelectedIndex = -1;
+            DtpDebut.Value = DateTime.Now;
+            DtpFin.Value = DateTime.Now;
         }
 
         /// <summary>
@@ -185,8 +188,11 @@ namespace MediaTek86.vue
 
                 if (Modif)
                 {
-                    controle.UpdatePersonnel(unPersonnel);
-                    Modif = false;
+                    if (MessageBox.Show("Voulez-vous vraiment modifier le personnel ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        controle.UpdatePersonnel(unPersonnel);
+                        Modif = false;
+                    }
                 }
                 else
                 {
@@ -201,22 +207,24 @@ namespace MediaTek86.vue
         }
 
         /// <summary>
-        /// méthode pour vider les champs
+        /// Evenement clic sur le bouton ajout
         /// </summary>
-        private void ViderChamps()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAjouter_Click(object sender, EventArgs e)
         {
-            TxtMail.Text = "";
-            TxtNom.Text = "";
-            TxtPrenom.Text = "";
-            TxtTel.Text = "";
-            CboMotif.SelectedIndex = -1;
-            CboService.SelectedIndex = -1;
-            DtpDebut.Value = DateTime.Now;
-            DtpFin.Value = DateTime.Now;
+            if (!GestionAbsence)
+            {
+                GestionAffichage("Ajout");
+            }
+            else
+            {
+                GestionAffichage("Absence");
+            }
         }
 
         /// <summary>
-        /// clic sur le bouton pour supprimer un personnel
+        /// clic sur le bouton supprimer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -275,7 +283,7 @@ namespace MediaTek86.vue
                     TxtPrenom.Text = unPersonnel.Prenom;
                     TxtMail.Text = unPersonnel.Mail;
                     TxtTel.Text = unPersonnel.Tel;
-                    CboService.SelectedIndex = unPersonnel.IdService-1;
+                    CboService.SelectedIndex = unPersonnel.IdService - 1;
                 }
                 else
                 {
@@ -291,7 +299,7 @@ namespace MediaTek86.vue
                     Absence uneAbsence = (Absence)bdgAbsence.List[bdgAbsence.Position];
                     DtpDebut.Value = uneAbsence.DateDebut;
                     DtpFin.Value = uneAbsence.DateFin;
-                    CboMotif.SelectedIndex = uneAbsence.IdMotif-1;
+                    CboMotif.SelectedIndex = uneAbsence.IdMotif - 1;
                 }
                 else
                 {
@@ -316,9 +324,11 @@ namespace MediaTek86.vue
             {
                 if (DgvListePersonnel.SelectedRows.Count > 0)
                 {
+                    IdPersonnel = (int)DgvListePersonnel.SelectedRows[0].Cells["idpersonnel"].Value;
                     RemplirListeAbsence();
                     GestionAbsence = true;
                     BtnAbsence.Text = "Retour à la liste";
+                    GrpListe.Text = "Liste des absences";
                 }
                 else
                 {
@@ -327,10 +337,55 @@ namespace MediaTek86.vue
             }
         }
 
+        /// <summary>
+        /// Clic sur le BtnAnnulerAbsence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnAnnulerAbsence_Click(object sender, EventArgs e)
         {
             ViderChamps();
             GestionAffichage("Init");
+        }
+        /// <summary>
+        /// Clic sur BtnValiderAbsence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnValiderAbsence_Click(object sender, EventArgs e)
+        {
+            if (CboMotif.SelectedIndex != -1)
+            {
+                if (DtpFin.Value > DtpDebut.Value)
+                {
+                    Motif unMotif = (Motif)bdgMotif.List[bdgMotif.Position];
+                    Absence uneAbsence = new Absence(IdPersonnel, unMotif.IdMotif, unMotif.Libelle, DtpDebut.Value, DtpFin.Value);
+
+                    if (Modif)
+                    {
+                        if (MessageBox.Show("Voulez-vous vraiment modifier l'absence ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            DateTime uneDate = (DateTime)DgvListePersonnel.SelectedRows[0].Cells["datedebut"].Value;
+                            controle.UpdateAbsence(uneAbsence, uneDate);
+                            Modif = false;
+                        }
+                    }
+                    else
+                    {
+                        controle.AjoutAbsence(uneAbsence);
+                    }
+                    RemplirListeAbsence();
+                    GestionAffichage("Init");
+                }
+                else
+                {
+                    MessageBox.Show("La date de fin est antérieure à la date dé début.", "Information");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Tous les champs doivent être remplis.", "Information");
+            }
         }
     }
 }

@@ -51,11 +51,9 @@ namespace MediaTek86.vue
             this.BtnValiderAbsence = new System.Windows.Forms.Button();
             this.DtpFin = new System.Windows.Forms.DateTimePicker();
             this.DtpDebut = new System.Windows.Forms.DateTimePicker();
-            this.CboNom = new System.Windows.Forms.ComboBox();
             this.LblDebut = new System.Windows.Forms.Label();
             this.LblMotif = new System.Windows.Forms.Label();
             this.LblFin = new System.Windows.Forms.Label();
-            this.LblNom2 = new System.Windows.Forms.Label();
             this.CboMotif = new System.Windows.Forms.ComboBox();
             this.BtnAbsence = new System.Windows.Forms.Button();
             this.GrpListe = new System.Windows.Forms.GroupBox();
@@ -68,7 +66,7 @@ namespace MediaTek86.vue
             // DgvListePersonnel
             // 
             this.DgvListePersonnel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvListePersonnel.Location = new System.Drawing.Point(12, 35);
+            this.DgvListePersonnel.Location = new System.Drawing.Point(26, 35);
             this.DgvListePersonnel.Name = "DgvListePersonnel";
             this.DgvListePersonnel.RowHeadersWidth = 62;
             this.DgvListePersonnel.RowTemplate.Height = 28;
@@ -90,7 +88,7 @@ namespace MediaTek86.vue
             this.GrpAjoutPers.Controls.Add(this.TxtTel);
             this.GrpAjoutPers.Controls.Add(this.TxtPrenom);
             this.GrpAjoutPers.Controls.Add(this.TxtNom);
-            this.GrpAjoutPers.Location = new System.Drawing.Point(0, 469);
+            this.GrpAjoutPers.Location = new System.Drawing.Point(14, 469);
             this.GrpAjoutPers.Name = "GrpAjoutPers";
             this.GrpAjoutPers.Size = new System.Drawing.Size(892, 162);
             this.GrpAjoutPers.TabIndex = 2;
@@ -99,7 +97,7 @@ namespace MediaTek86.vue
             // 
             // BtnAnnulerPers
             // 
-            this.BtnAnnulerPers.Location = new System.Drawing.Point(725, 110);
+            this.BtnAnnulerPers.Location = new System.Drawing.Point(737, 110);
             this.BtnAnnulerPers.Name = "BtnAnnulerPers";
             this.BtnAnnulerPers.Size = new System.Drawing.Size(130, 34);
             this.BtnAnnulerPers.TabIndex = 14;
@@ -235,22 +233,20 @@ namespace MediaTek86.vue
             this.GrpAbsence.Controls.Add(this.BtnValiderAbsence);
             this.GrpAbsence.Controls.Add(this.DtpFin);
             this.GrpAbsence.Controls.Add(this.DtpDebut);
-            this.GrpAbsence.Controls.Add(this.CboNom);
             this.GrpAbsence.Controls.Add(this.LblDebut);
             this.GrpAbsence.Controls.Add(this.LblMotif);
             this.GrpAbsence.Controls.Add(this.LblFin);
-            this.GrpAbsence.Controls.Add(this.LblNom2);
             this.GrpAbsence.Controls.Add(this.CboMotif);
-            this.GrpAbsence.Location = new System.Drawing.Point(0, 642);
+            this.GrpAbsence.Location = new System.Drawing.Point(14, 642);
             this.GrpAbsence.Name = "GrpAbsence";
-            this.GrpAbsence.Size = new System.Drawing.Size(892, 162);
+            this.GrpAbsence.Size = new System.Drawing.Size(892, 125);
             this.GrpAbsence.TabIndex = 13;
             this.GrpAbsence.TabStop = false;
             this.GrpAbsence.Text = "Gestion des absences";
             // 
             // BtnAnnulerAbsence
             // 
-            this.BtnAnnulerAbsence.Location = new System.Drawing.Point(725, 110);
+            this.BtnAnnulerAbsence.Location = new System.Drawing.Point(737, 81);
             this.BtnAnnulerAbsence.Name = "BtnAnnulerAbsence";
             this.BtnAnnulerAbsence.Size = new System.Drawing.Size(130, 34);
             this.BtnAnnulerAbsence.TabIndex = 15;
@@ -260,17 +256,18 @@ namespace MediaTek86.vue
             // 
             // BtnValiderAbsence
             // 
-            this.BtnValiderAbsence.Location = new System.Drawing.Point(569, 110);
+            this.BtnValiderAbsence.Location = new System.Drawing.Point(569, 81);
             this.BtnValiderAbsence.Name = "BtnValiderAbsence";
             this.BtnValiderAbsence.Size = new System.Drawing.Size(130, 34);
             this.BtnValiderAbsence.TabIndex = 15;
             this.BtnValiderAbsence.Text = "Valider";
             this.BtnValiderAbsence.UseVisualStyleBackColor = true;
+            this.BtnValiderAbsence.Click += new System.EventHandler(this.BtnValiderAbsence_Click);
             // 
             // DtpFin
             // 
             this.DtpFin.CustomFormat = "";
-            this.DtpFin.Location = new System.Drawing.Point(406, 67);
+            this.DtpFin.Location = new System.Drawing.Point(667, 36);
             this.DtpFin.MaxDate = new System.DateTime(9922, 5, 10, 0, 0, 0, 0);
             this.DtpFin.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             this.DtpFin.Name = "DtpFin";
@@ -280,24 +277,16 @@ namespace MediaTek86.vue
             // 
             // DtpDebut
             // 
-            this.DtpDebut.Location = new System.Drawing.Point(406, 34);
+            this.DtpDebut.Location = new System.Drawing.Point(406, 36);
             this.DtpDebut.Name = "DtpDebut";
             this.DtpDebut.Size = new System.Drawing.Size(200, 26);
             this.DtpDebut.TabIndex = 14;
             this.DtpDebut.Value = new System.DateTime(2022, 5, 10, 15, 58, 15, 0);
             // 
-            // CboNom
-            // 
-            this.CboNom.FormattingEnabled = true;
-            this.CboNom.Location = new System.Drawing.Point(84, 34);
-            this.CboNom.Name = "CboNom";
-            this.CboNom.Size = new System.Drawing.Size(246, 28);
-            this.CboNom.TabIndex = 13;
-            // 
             // LblDebut
             // 
             this.LblDebut.AutoSize = true;
-            this.LblDebut.Location = new System.Drawing.Point(336, 37);
+            this.LblDebut.Location = new System.Drawing.Point(339, 37);
             this.LblDebut.Name = "LblDebut";
             this.LblDebut.Size = new System.Drawing.Size(61, 20);
             this.LblDebut.TabIndex = 8;
@@ -306,7 +295,7 @@ namespace MediaTek86.vue
             // LblMotif
             // 
             this.LblMotif.AutoSize = true;
-            this.LblMotif.Location = new System.Drawing.Point(6, 72);
+            this.LblMotif.Location = new System.Drawing.Point(12, 39);
             this.LblMotif.Name = "LblMotif";
             this.LblMotif.Size = new System.Drawing.Size(52, 20);
             this.LblMotif.TabIndex = 7;
@@ -315,25 +304,16 @@ namespace MediaTek86.vue
             // LblFin
             // 
             this.LblFin.AutoSize = true;
-            this.LblFin.Location = new System.Drawing.Point(355, 69);
+            this.LblFin.Location = new System.Drawing.Point(622, 37);
             this.LblFin.Name = "LblFin";
             this.LblFin.Size = new System.Drawing.Size(39, 20);
             this.LblFin.TabIndex = 6;
             this.LblFin.Text = "Fin :";
             // 
-            // LblNom2
-            // 
-            this.LblNom2.AutoSize = true;
-            this.LblNom2.Location = new System.Drawing.Point(6, 40);
-            this.LblNom2.Name = "LblNom2";
-            this.LblNom2.Size = new System.Drawing.Size(50, 20);
-            this.LblNom2.TabIndex = 5;
-            this.LblNom2.Text = "Nom :";
-            // 
             // CboMotif
             // 
             this.CboMotif.FormattingEnabled = true;
-            this.CboMotif.Location = new System.Drawing.Point(85, 69);
+            this.CboMotif.Location = new System.Drawing.Point(84, 34);
             this.CboMotif.Name = "CboMotif";
             this.CboMotif.Size = new System.Drawing.Size(246, 28);
             this.CboMotif.TabIndex = 4;
@@ -355,18 +335,19 @@ namespace MediaTek86.vue
             this.GrpListe.Controls.Add(this.BtnAjouter);
             this.GrpListe.Controls.Add(this.BtnModifier);
             this.GrpListe.Controls.Add(this.BtnSupprimer);
-            this.GrpListe.Location = new System.Drawing.Point(0, 12);
+            this.GrpListe.Location = new System.Drawing.Point(14, 12);
             this.GrpListe.Name = "GrpListe";
             this.GrpListe.Size = new System.Drawing.Size(892, 446);
             this.GrpListe.TabIndex = 14;
             this.GrpListe.TabStop = false;
+            this.GrpListe.Text = "Liste";
             // 
             // FrmGestionPers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(893, 803);
+            this.ClientSize = new System.Drawing.Size(921, 782);
             this.Controls.Add(this.GrpAbsence);
             this.Controls.Add(this.GrpAjoutPers);
             this.Controls.Add(this.DgvListePersonnel);
@@ -401,11 +382,9 @@ namespace MediaTek86.vue
         private System.Windows.Forms.Button BtnAjouter;
         private System.Windows.Forms.Label LblTel;
         private System.Windows.Forms.GroupBox GrpAbsence;
-        private System.Windows.Forms.ComboBox CboNom;
         private System.Windows.Forms.Label LblDebut;
         private System.Windows.Forms.Label LblMotif;
         private System.Windows.Forms.Label LblFin;
-        private System.Windows.Forms.Label LblNom2;
         private System.Windows.Forms.ComboBox CboMotif;
         private System.Windows.Forms.DateTimePicker DtpFin;
         private System.Windows.Forms.DateTimePicker DtpDebut;

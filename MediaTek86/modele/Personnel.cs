@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MediaTek86.modele
+﻿namespace MediaTek86.modele
 {
     /// <summary>
     /// Classe métier concernant les personnels.
@@ -51,12 +45,12 @@ namespace MediaTek86.modele
         /// <summary>
         /// Constructeur : valorise les propriétés
         /// </summary>
-        /// <param name="idpersonnel"></param>
-        /// <param name="nom"></param>
-        /// <param name="prenom"></param>
-        /// <param name="tel"></param>
-        /// <param name="mail"></param>
-        /// <param name="idservice"></param>
+        /// <param name="idpersonnel">idpersonnel</param>
+        /// <param name="nom">nom</param>
+        /// <param name="prenom">prénom</param>
+        /// <param name="tel">numéro de tel</param>
+        /// <param name="mail">adresse mail</param>
+        /// <param name="idservice">id du service</param>
         /// <param name="service">nom du service</param>
         public Personnel(int idpersonnel, string nom, string prenom, string tel, string mail, int idservice, string service)
         {
