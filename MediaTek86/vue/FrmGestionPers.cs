@@ -2,6 +2,8 @@
 using MediaTek86.modele;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace MediaTek86.vue
@@ -67,6 +69,25 @@ namespace MediaTek86.vue
             RemplissageCboMotif();
             GestionAffichage("Init");
             ViderChamps();
+            InitialisationBoutons();
+        }
+
+        /// <summary>
+        /// Initialisation des différents boutons.
+        /// </summary>
+        public void InitialisationBoutons()
+        {
+            BtnAfficher.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAbsence.png"));
+            BtnAfficher.Visible = true;
+            BtnRetour.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAbsenceRetour.png"));
+            BtnRetour.Visible = false;
+            BtnAjouter.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAjouter.png"));
+            BtnModifier.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnModifier.png"));
+            BtnSupprimer.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnSupprimer.png"));
+            BtnValiderPers.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnValider.png"));
+            BtnAnnulerPers.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAnnuler.png"));
+            BtnValiderAbsence.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnValider.png"));
+            BtnAnnulerAbsence.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAnnuler.png"));
         }
 
         /// <summary>
@@ -143,18 +164,58 @@ namespace MediaTek86.vue
                     GrpAjoutPers.Enabled = true;
                     DgvListePersonnel.Enabled = false;
                     GrpListe.Enabled = false;
+                    BtnValiderPers.Visible = true;
+                    BtnAnnulerPers.Visible = true;
+                    BtnValiderAbsence.Visible = false;
+                    BtnAnnulerAbsence.Visible = false;
+                    BtnModifier.Visible = false;
+                    BtnAjouter.Visible = false;
+                    BtnSupprimer.Visible = false;
+                    BtnAfficher.Visible = false;
                     break;
                 case "Absence":
                     GrpAbsence.Enabled = true;
                     GrpAjoutPers.Enabled = false;
                     DgvListePersonnel.Enabled = false;
                     GrpListe.Enabled = false;
+                    BtnValiderPers.Visible = false;
+                    BtnAnnulerPers.Visible = false;
+                    BtnValiderAbsence.Visible = true;
+                    BtnAnnulerAbsence.Visible = true;
+                    BtnModifier.Visible = false;
+                    BtnAjouter.Visible = false;
+                    BtnSupprimer.Visible = false;
+                    BtnAfficher.Visible = false;
+                    BtnRetour.Visible = false;
                     break;
                 case "Init":
                     GrpAbsence.Enabled = false;
                     GrpAjoutPers.Enabled = false;
                     DgvListePersonnel.Enabled = true;
                     GrpListe.Enabled = true;
+                    BtnValiderPers.Visible = false;
+                    BtnAnnulerPers.Visible = false;
+                    BtnValiderAbsence.Visible = false;
+                    BtnAnnulerAbsence.Visible = false;
+                    BtnModifier.Visible = true;
+                    BtnAjouter.Visible = true;
+                    BtnSupprimer.Visible = true;
+                    BtnAfficher.Visible = true;
+                    break;
+                case "RetourListe":
+                    GrpAbsence.Enabled = false;
+                    GrpAjoutPers.Enabled = false;
+                    DgvListePersonnel.Enabled = true;
+                    GrpListe.Enabled = true;
+                    BtnValiderPers.Visible = false;
+                    BtnAnnulerPers.Visible = false;
+                    BtnValiderAbsence.Visible = false;
+                    BtnAnnulerAbsence.Visible = false;
+                    BtnModifier.Visible = true;
+                    BtnAjouter.Visible = true;
+                    BtnSupprimer.Visible = true;
+                    BtnAfficher.Visible = false;
+                    BtnRetour.Visible = true;
                     break;
             }
         }
@@ -164,7 +225,7 @@ namespace MediaTek86.vue
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnAnnulerAjoutPers_Click(object sender, EventArgs e)
+        private void BtnAnnulerPers_Click(object sender, EventArgs e)
         {
             Init();
         }
@@ -309,43 +370,18 @@ namespace MediaTek86.vue
         }
 
         /// <summary>
-        /// Bouton pour gerer les absences d'un personnel
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnAbsence_Click(object sender, EventArgs e)
-        {
-            if (BtnAbsence.Text.Equals("Retour à la liste"))
-            {
-                Init();
-                BtnAbsence.Text = "Afficher les absences";
-            }
-            else
-            {
-                if (DgvListePersonnel.SelectedRows.Count > 0)
-                {
-                    IdPersonnel = (int)DgvListePersonnel.SelectedRows[0].Cells["idpersonnel"].Value;
-                    RemplirListeAbsence();
-                    GestionAbsence = true;
-                    BtnAbsence.Text = "Retour à la liste";
-                    GrpListe.Text = "Liste des absences";
-                }
-                else
-                {
-                    MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
-                }
-            }
-        }
-
-        /// <summary>
         /// Clic sur le BtnAnnulerAbsence
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnAnnulerAbsence_Click(object sender, EventArgs e)
         {
+            if (Modif)
+            {
+                Modif = false;
+            }
             ViderChamps();
-            GestionAffichage("Init");
+            GestionAffichage("RetourListe");
         }
         /// <summary>
         /// Clic sur BtnValiderAbsence
@@ -375,7 +411,7 @@ namespace MediaTek86.vue
                         controle.AjoutAbsence(uneAbsence);
                     }
                     RemplirListeAbsence();
-                    GestionAffichage("Init");
+                    GestionAffichage("RetourListe");
                 }
                 else
                 {
@@ -386,6 +422,199 @@ namespace MediaTek86.vue
             {
                 MessageBox.Show("Tous les champs doivent être remplis.", "Information");
             }
+        }
+        /// <summary>
+        /// Evenement lors du clic sur le BtnRetour
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnRetour_Click(object sender, EventArgs e)
+        {
+            BtnRetour.Visible = false;
+            Init();
+        }
+        /// <summary>
+        /// Evenement lors du clic sur le BtnAfficher
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAfficher_Click(object sender, EventArgs e)
+        {
+            if (DgvListePersonnel.SelectedRows.Count > 0)
+            {
+                IdPersonnel = (int)DgvListePersonnel.SelectedRows[0].Cells["idpersonnel"].Value;
+                RemplirListeAbsence();
+                GestionAbsence = true;
+                BtnAfficher.Visible = false;
+                BtnRetour.Visible = true;
+                GrpListe.Text = "Liste des absences";
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+            }
+        }
+        /// <summary>
+        /// Evenement lors du survol entrant BtnRetour
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnRetour_MouseEnter(object sender, EventArgs e)
+        {
+            BtnRetour.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAbsenceRetourHover.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol sortant BtnRetour
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnRetour_MouseLeave(object sender, EventArgs e)
+        {
+            BtnRetour.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAbsenceRetour.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol entrant BtnAfficher
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAfficher_MouseEnter(object sender, EventArgs e)
+        {
+            BtnAfficher.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAbsenceHover.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol sortant BtnAfficher
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAfficher_MouseLeave(object sender, EventArgs e)
+        {
+            BtnAfficher.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAbsence.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol entrant BtnModifier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnModifier_MouseEnter(object sender, EventArgs e)
+        {
+            BtnModifier.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnModifierHover.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol sotant BtnModifier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnModifier_MouseLeave(object sender, EventArgs e)
+        {
+            BtnModifier.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnModifier.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol entrant BtnSupprimer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSupprimer_MouseEnter(object sender, EventArgs e)
+        {
+            BtnSupprimer.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnSupprimerHover.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol sortant BtnSupprimer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSupprimer_MouseLeave(object sender, EventArgs e)
+        {
+            BtnSupprimer.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnSupprimer.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol entrant BtnAjouter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAjouter_MouseEnter(object sender, EventArgs e)
+        {
+            BtnAjouter.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAjouterHover.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol sortant BtnAjouter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAjouter_MouseLeave(object sender, EventArgs e)
+        {
+            BtnAjouter.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAjouter.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol entrant BtnValiderAbsence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnValiderAbsence_MouseEnter(object sender, EventArgs e)
+        {
+            BtnValiderAbsence.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnValiderHover.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol sortant BtnValiderAbsence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnValiderAbsence_MouseLeave(object sender, EventArgs e)
+        {
+            BtnValiderAbsence.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnValider.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol entrant BtnAnnulerAbsence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAnnulerAbsence_MouseEnter(object sender, EventArgs e)
+        {
+            BtnAnnulerAbsence.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAnnulerHover.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol sortant BtnAnnulerAbsence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAnnulerAbsence_MouseLeave(object sender, EventArgs e)
+        {
+            BtnAnnulerAbsence.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAnnuler.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol entrant BtnValiderPers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnValiderPers_MouseEnter(object sender, EventArgs e)
+        {
+            BtnValiderPers.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnValiderHover.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol sortant BtnValiderPers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnValiderPers_MouseLeave(object sender, EventArgs e)
+        {
+            BtnValiderPers.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnValider.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol entrant BtnAnnulerPers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAnnulerPers_MouseEnter(object sender, EventArgs e)
+        {
+            BtnAnnulerPers.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAnnulerHover.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol sortant BtnAnnulerPers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnAnnulerPers_MouseLeave(object sender, EventArgs e)
+        {
+            BtnAnnulerPers.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnAnnuler.png"));
         }
     }
 }

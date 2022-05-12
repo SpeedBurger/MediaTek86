@@ -1,5 +1,7 @@
 ﻿using MediaTek86.controleur;
 using System;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace MediaTek86.vue
@@ -22,6 +24,7 @@ namespace MediaTek86.vue
         {
             InitializeComponent();
             this.controle = controle;
+            BtnConnecter.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnConnecter.png"));
         }
 
         /// <summary>
@@ -58,6 +61,24 @@ namespace MediaTek86.vue
             {
                 BtnConnecter_Click(null, null);
             }
+        }
+        /// <summary>
+        /// Evenement lors du survol entrant BtnConnecter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnConnecter_MouseEnter(object sender, EventArgs e)
+        {
+            BtnConnecter.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnConnecterHover.png"));
+        }
+        /// <summary>
+        /// Evenement lors du survol sortant du BtnConnecter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnConnecter_MouseLeave(object sender, EventArgs e)
+        {
+            BtnConnecter.Image = Image.FromFile(Path.Combine(Application.StartupPath, "img/BtnConnecter.png"));
         }
     }
 }
